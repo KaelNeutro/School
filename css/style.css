@@ -1,0 +1,21 @@
+.login-panel {  
+    margin-top: 30px;  
+}
+
+.panel-title{
+	text-align: center;
+	font-weight: bold;
+}
+
+select:required:invalid {
+  color: #A9A9A9;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+
+
