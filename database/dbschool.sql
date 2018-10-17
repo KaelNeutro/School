@@ -75,7 +75,6 @@ CREATE TABLE `students` (
   `birth` date NOT NULL,
   `grade` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `education` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `lastyear` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `lastyear` text COLLATE utf8_unicode_ci NOT NULL,
   `guardianUser` varchar(11) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
