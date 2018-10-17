@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Out-2018 às 23:16
+-- Generation Time: 18-Out-2018 às 00:09
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -76,8 +76,17 @@ CREATE TABLE `students` (
   `grade` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `education` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `lastyear` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `lastyear` text COLLATE utf8_unicode_ci NOT NULL,
   `guardianUser` varchar(11) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `students`
+--
+
+INSERT INTO `students` (`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`) VALUES
+(1, 'Maicon Bernades', '2008-09-09', '5th grade', 'Elementary School', 'Approved', '34567890123'),
+(8, 'Maicon Bernades Junior', '2008-09-09', '5th grade', 'Elementary School', 'Approved', '34567890123');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,7 @@ ALTER TABLE `pendency`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `vacancies`
