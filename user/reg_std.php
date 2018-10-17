@@ -119,7 +119,8 @@ session_start();//session starts here
 		$std_last=$_POST['lastyear'];
 		$std_guardian=$_SESSION['l_user'];
 
-		
+		$position = strpos($std_edu,":");
+		$std_edu = substr($std_edu, $position);
 		// validando campos vazios
 		if($std_name=='') 
 		{  
