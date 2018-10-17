@@ -120,7 +120,7 @@ session_start();//session starts here
 		$std_guardian=$_SESSION['l_user'];
 
 		$position = strpos($std_edu,":");
-		$std_edu = substr($std_edu, $position);
+		$std_edu = substr($std_edu, $position + 1);
 		// validando campos vazios
 		if($std_name=='') 
 		{  
