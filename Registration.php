@@ -252,7 +252,7 @@ if(isset($_POST['register'])){
 
 } elseif (isset($_POST['registerSchool'])) {
     # code...
-    $user_name=$_POST['nameSchool'];//aqui obtendo resultado da matriz post depois de enviar o formulário.
+    $user_name=addslashes($_POST['nameSchool']);//aqui obtendo resultado da matriz post depois de enviar o formulário.
     $user_codeS=$_POST['codeSchool'];  
     $user_pass=$_POST['passSchool'];
     $user_cpass=$_POST['cpassSchool'];

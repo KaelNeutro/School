@@ -46,7 +46,7 @@ session_start();//session starts here
 								<div ng-app="switchExample" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
 										<div class="form-group">
-											<select class="form-control" ng-model="selection" placeholder="Education" ng-options="item for item in items" id="eduStd" name="eduStd" required>
+											<select class="form-control" ng-model="selection" placeholder="Education" ng-options="item for item in items" id="eduStd" name="eduStd" value={{selection}} required>
 												<option value="" disabled selected hidden> Education</option>
 											</select>
 										</div>
@@ -109,16 +109,17 @@ session_start();//session starts here
 </html>
 
 <?php
-	include("database/db_conection.php");//Conectando com o banco
+	include("../database/db_conection.php");//Conectando com o banco
 	error_reporting(E_ALL);
 	if(isset($_POST['registerStd'])){
-		$std_name=$_POST['nameStd'];//aqui obtendo resultado da matriz post depois de enviar o formulário.
+		$std_name=addslashes($_POST['nameStd'])	;//aqui obtendo resultado da matriz post depois de enviar o formulário.
 		$std_birth=$_POST['birthStd'];
-		$std_edu=$_POST['eduStd'];  
+		$std_edu= $_POST['eduStd'];  
 		$std_grade=$_POST['gradeStd'];
 		$std_last=$_POST['lastyear'];
 		$std_guardian=$_SESSION['l_user'];
 
+		
 		// validando campos vazios
 		if($std_name=='') 
 		{  
@@ -155,7 +156,7 @@ session_start();//session starts here
         	exit(); // retorna ao formulario
     	}
     	//inserir usuario em banco de dados. 
-    	$insert_user="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`) VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')"
+    	$insert_user="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`) VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')";
 
     	if(mysqli_query($dbcon,$insert_user))  
     	{  
