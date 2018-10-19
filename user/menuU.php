@@ -41,7 +41,7 @@ session_start();//session starts here
                                 <div class="collapse btn-block" id="menu-std">
                                     <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='reg_std.php'"> Register  </button>
                                     <button type="button" class="btn  btn-primary btn-block"> Alter Data  </button>
-                                    <button type="button" class="btn  btn-warning btn-block"> Remove  </button>
+                                    <button type="button" class="btn  btn-warning btn-block" onclick="window.location.href='view_std.php'"> Remove  </button>
 
                                 </div>
                                 <!-- Opções Vagas-->
