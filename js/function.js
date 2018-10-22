@@ -139,13 +139,53 @@ $(document).ready(function(){
     });
 });
 
-(function(angular) {
-  'use strict';
-angular.module('switchExample', ['ngAnimate'])
-  .controller('GradeController', ['$scope', function($scope) {
-    $scope.items = ['Elementary School', 'Middle School', 'High School'];
-    //$scope.selection = $scope.items[0];
-  }]);
-})(window.angular);
 
+// Switch Registe Students
+$(document).ready(function(){
+    (function(angular) {
+      'use strict';
+      angular.module('switch_regStd', ['ngAnimate'])
+      .controller('GradeController', ['$scope', function($scope) {
+        $scope.items = ['Elementary School', 'Middle School', 'High School'];
+    //$scope.selection = $scope.items[0];
+}]);
+  })(window.angular);
+});
+
+/*
+// Switch Alter Students
+var s = "switch";
+var a = "altStd";
+for (var i = 0; i < 1; i++) {
+    var r = s.concat(i,this.a);
+    $(document).ready(function(){
+        (function(angular) {
+          'use strict';
+          angular.module(r.val(), ['ngAnimate'])
+          .controller('GradeController', ['$scope', function($scope) {
+            $scope.items = ['Elementary School', 'Middle School', 'High School'];
+    //$scope.selection = $scope.items[0];
+}]);
+      })(window.angular);
+  });
+}*/
+
+/*
+$(document).ready(function(){
+    var swi = '';
+    for (var i = 0; i < Things.length; i++) {
+        swi = swi.concat("switch",,"altstd");
+        (function(angular) {
+          'use strict';
+          angular.module(switch, ['ngAnimate'])
+          .controller('GradeController', ['$scope', function($scope) {
+            $scope.items = ['Elementary School', 'Middle School', 'High School'];
+    //$scope.selection = $scope.items[0];
+            }]);
+        })(window.angular);
+
+  }
+
+});
+*/
 

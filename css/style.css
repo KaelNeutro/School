@@ -17,5 +17,11 @@ option {
   color: black;
 }
 
+td{
+   word-wrap: break-word; 
+}
 
+table{
+	table-layout:fixed;
+}
 

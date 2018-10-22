@@ -12,16 +12,16 @@ session_start();//session starts here
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!-- Angular -->
-	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
-	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<!-- CSS--> 
-	<link type="text/css" rel="stylesheet" href="..\css\style.css">
-	<!-- Jquery--> 
-	<script src="..\js\jquery.min.js"></script>
-	<script src="..\js\function.js"></script>
+    <!-- CSS--> 
+    <link type="text/css" rel="stylesheet" href="..\css\style.css">
+    <!-- Jquery--> 
+    <script src="..\js\jquery.min.js"></script>
+    <script src="..\js\function.js"></script>
+    <!-- Angular -->
+    <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+    <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
+    <script src="..\js\angular\angular.min.js"></script>
+    <script src="..\js\angular\angular-animate.js"></script>
 	<title>Register Students</title>
 </head>
 <body>
@@ -43,7 +43,7 @@ session_start();//session starts here
 								<div class="form-group">  
 									<input class="form-control" placeholder="Date of Birth" name="birthStd" id="birthStd" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">  
 								</div>
-								<div ng-app="switchExample" > <!-- Usei Angular Switch -->
+								<div ng-app="switch_regStd" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
 										<div class="form-group">
 											<select class="form-control" ng-model="selection" placeholder="Education" ng-options="item for item in items" id="eduStd" name="eduStd" value={{selection}} required>

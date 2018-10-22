@@ -16,7 +16,7 @@ session_start();//session starts here
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- CSS--> 
     <link type="text/css" rel="stylesheet" href="..\css\style.css">
-    <title>Menu Usuário</title>
+    <title>Menu User</title>
 
 </head>
     
@@ -66,7 +66,7 @@ session_start();//session starts here
                                 <button class="btn btn-danger btn-block btn-lg" type="button" data-toggle="collapse"aria-expanded="false" onclick="location.href='../Logout.php'" >
                                     Logout
                                 </button>
-                                <!-- Ir para o formulario de cadastro -->
+                                
                             </fieldset>
                         </form>
                     </div>
