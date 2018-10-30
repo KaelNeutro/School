@@ -25,3 +25,12 @@ table{
 	table-layout:fixed;
 }
 
+#highStd{
+	display: none;
+}
+#elementaryStd{
+	display: none;
+} 
+#middleStd{
+	display: none;
+}	

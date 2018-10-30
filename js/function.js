@@ -152,24 +152,76 @@ $(document).ready(function(){
   })(window.angular);
 });
 
-/*
+
+
 // Switch Alter Students
-var s = "switch";
-var a = "altStd";
-for (var i = 0; i < 1; i++) {
-    var r = s.concat(i,this.a);
-    $(document).ready(function(){
+$(document).ready(function(){
+    $("#eduStd").change(function(){
+    var op = " "
+    op = $('#eduStd').val();
+    alert(op);
+    switch(op){
+        case "Elementary School":
+            $("#elementaryStd").show();
+            $("#middleStd").hide();
+            $("#highStd").hide();
+            break;
+        case 'Middle School':
+            $("#middleStd").show();
+            $("#highStd").hide();
+            $("#elementaryStd").hide();
+            break;
+        case 'High School':
+            $("#highStd").show();
+            $("#middleStd").hide();
+            $("#elementaryStd").hide();
+            break;
+    }
+});
+
+});
+
+
+/*
+    var cont=0;
+    var alt ="alter";
+    var std = "std";
+    var d = "div#";
+    var c = "#"
+    var a = "'";
+    var red = d.concat(alt,cont,std);
+    var res = c.concat(alt,cont,std); 
+    
+    while($(red).length){
+        alert(res);
+        $(res).ready(function(){
+            alert(res);
         (function(angular) {
           'use strict';
-          angular.module(r.val(), ['ngAnimate'])
+          angular.module('switch_regStd', ['ngAnimate'])
           .controller('GradeController', ['$scope', function($scope) {
             $scope.items = ['Elementary School', 'Middle School', 'High School'];
     //$scope.selection = $scope.items[0];
 }]);
-      })(window.angular);
-  });
-}*/
+      });
+      });
+    cont = cont + 1;
+    red = d.concat(alt,cont,std);
+    res = c.concat(alt,cont,std);   
+  }
+*/
 
+/*
+function myFunction() {
+   (function(angular) {
+      'use strict';
+      angular.module('switch_regStd', ['ngAnimate'])
+      .controller('GradeController', ['$scope', function($scope) {
+        $scope.items = ['Elementary School', 'Middle School', 'High School'];
+    //$scope.selection = $scope.items[0];
+}]);
+  })(window.angular);
+}*/
 /*
 $(document).ready(function(){
     var swi = '';
