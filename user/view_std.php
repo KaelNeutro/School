@@ -90,7 +90,7 @@
         <?php } ?>
 
     </table>
-        <button class="btn btn-lg btn-primary center-block">BACK</button>
+        <button class="btn btn-lg btn-primary center-block" onclick="window.location.href='menuU.php'">BACK</button>
         </div>
 </div>
 
