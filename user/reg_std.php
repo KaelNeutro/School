@@ -157,7 +157,7 @@ session_start();//session starts here
         	exit(); // retorna ao formulario
     	}
     	//inserir usuario em banco de dados. 
-    	$insert_std="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianstd`) VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')";
+    	$insert_std="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`)  VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')";
 
     	if(mysqli_query($dbcon,$insert_std))  
     	{  
