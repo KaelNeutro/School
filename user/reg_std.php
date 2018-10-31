@@ -24,7 +24,7 @@ session_start();//session starts here
     <script src="..\js\angular\angular-animate.js"></script>
 	<title>Register Students</title>
 </head>
-<body>
+<body id="rgSTD">
 	<div class="container"> <!-- FORMULARIO DE REGISTRO DE ESTUDANTES-->
 		<div class="row"> 
 
@@ -46,7 +46,7 @@ session_start();//session starts here
 								<div ng-app="switch_regStd" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
 										<div class="form-group">
-											<select class="form-control" ng-model="selection" placeholder="Education" ng-options="item for item in items" id="eduStd" name="eduStd" value={{selection}} required>
+											<select class="form-control" ng-model="selection" placeholder="Education" ng-options="item for item in items" id="eduStd1" name="eduStd1" value={{selection}} required>
 												<option value="" disabled selected hidden> Education</option>
 											</select>
 										</div>
@@ -54,7 +54,7 @@ session_start();//session starts here
 										<div class="animate-switch-container"
 										ng-switch on="selection">
 										<div class="animate-switch form-group" ng-switch-when="Elementary School" ng-switch-when-separator="|">
-											<select class="form-control" id="gradeStd" name="gradeStd" required>
+											<select class="form-control" id="gradeStd1" name="gradeStd1" required>
 												<option value="" disabled selected hidden> Grade</option>
 												<option value="1st grade" > 1st grade </option>
 												<option value="2nd grade" > 2nd grade </option>
@@ -65,7 +65,7 @@ session_start();//session starts here
 											</select>
 										</div>
 										<div class="animate-switch form-group" ng-switch-when="Middle School" ng-switch-when-separator="|">
-											<select class="form-control" id="gradeStd" name="gradeStd" required>
+											<select class="form-control" id="gradeStd1" name="gradeStd1" required>
 												<option value="" disabled selected hidden> Grade</option>
 												<option value="6th grade" > 6th grade </option>
 												<option value="7th grade" > 7th grade </option>
@@ -74,7 +74,7 @@ session_start();//session starts here
 											</select>
 										</div>
 										<div class="animate-switch form-group" ng-switch-when="High School" ng-switch-when-separator="|">
-											<select class="form-control" id="gradeStd" name="gradeStd" required>
+											<select class="form-control" id="gradeStd1" name="gradeStd1" required>
 												<option value="" disabled selected hidden> Grade</option>
 												<option value="1st grade" > 1st grade </option>
 												<option value="2nd grade" > 2nd grade </option>
@@ -114,8 +114,8 @@ session_start();//session starts here
 	if(isset($_POST['registerStd'])){
 		$std_name=addslashes($_POST['nameStd'])	;//aqui obtendo resultado da matriz post depois de enviar o formulário.
 		$std_birth=$_POST['birthStd'];
-		$std_edu= $_POST['eduStd'];  
-		$std_grade=$_POST['gradeStd'];
+		$std_edu= $_POST['eduStd1'];  
+		$std_grade=$_POST['gradeStd1'];
 		$std_last=$_POST['lastyear'];
 		$std_guardian=$_SESSION['l_user'];
 
@@ -157,15 +157,30 @@ session_start();//session starts here
         	exit(); // retorna ao formulario
     	}
     	//inserir usuario em banco de dados. 
-    	$insert_user="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`) VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')";
+    	$insert_std="INSERT INTO `students`(`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianstd`) VALUES ('','$std_name','$std_birth','$std_grade','$std_edu','$std_last','$std_guardian')";
 
-    	if(mysqli_query($dbcon,$insert_user))  
+    	if(mysqli_query($dbcon,$insert_std))  
     	{  
-        	echo"<script>window.open('Welcome.php','_self')</script>";  
+        	echo"<script>window.open('MenuU.php','_self')</script>";  
     	} else{
-        	echo "Error: " . $insert_user . "<br>" . mysqli_error($dbcon);
+        	echo "Error: " . $insert_std . "<br>" . mysqli_error($dbcon);
     	}
     	mysqli_close($dbcon);  
 
     }
 ?>
+<script type="text/javascript">
+	// Switch Registe Students
+$('document').ready(function(){
+    
+    (function(angular) {
+      'use strict';
+      angular.module('switch_regStd', ['ngAnimate'])
+      .controller('GradeController', ['$scope', function($scope) {
+        $scope.items = ['Elementary School', 'Middle School', 'High School'];
+    //$scope.selection = $scope.items[0];
+}]);
+  })(window.angular);
+});
+
+</script>
