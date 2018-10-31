@@ -51,7 +51,7 @@ session_start();//session starts here
                                     $run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
                                     $cont = 0;
                                     while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
-                                    {
+                                    { error_reporting(E_ALL);
 
                                         $std_code=$row[0];
                                         $std_name=$row[1];
@@ -76,7 +76,7 @@ session_start();//session starts here
                                         <div  > <!-- Usei Angular Switch -->
                                             <div  >
                                                 <div class="form-group">
-                                                    <select class="form-control"  id="<?php echo 'edu'.$cont.'Std'; ?>" name="<?php echo 'edu'.$cont.'Std'; ?>" required>
+                                                    <select class="form-control"  id="<?php echo 'edu'.$cont.'Std'; ?>" name="<?php echo 'edu'.$cont.'Std'; ?>" >
                                                         <option value="" disabled selected hidden> Education</option>       
                                                         <option value="Elementary School">Elementary School</option> 
                                                         <option value="Middle School"> Middle School </option>
@@ -117,8 +117,8 @@ session_start();//session starts here
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" id="lastyear" name="<?php echo 'last'.$cont.'Std'; ?>" required>
-                                                <option value="<?php echo $std_last; ?>" disabled selected hidden><?php echo $std_last; ?> </option>
+                                            <select class="form-control" id="<?php echo 'last'.$cont.'Std'; ?>" name="<?php echo 'last'.$cont.'Std'; ?>" >
+                                                <option value="" disabled selected hidden>Last year's situation </option>
                                                 <option>Approved</option>
                                                 <option>Classified</option>
                                                 <option>Disapproved</option>
