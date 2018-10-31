@@ -97,7 +97,7 @@ session_start();//session starts here
 								</select>
 							</div>  
 
-							<input class="btn btn-lg btn-success btn-block" type="submit" value="register" name="registerStd" >
+							<input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="registerStd" >
 						</fieldset>
 					</form>
 				</div>
