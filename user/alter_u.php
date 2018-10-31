@@ -22,7 +22,7 @@
     <script src="..\js\function.js"></script>
     <!-- CSS--> 
     <link type="text/css" rel="stylesheet" href="..\css\style.css">
-    <title>View students</title>
+    <title>Alter date user</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-success">  
                     <div class="panel-heading">  
-                        <h3 class="panel-title">Registration</h3>  
+                        <h3 class="panel-title">Update Date</h3>  
                     </div>
                     
                     <div class="tab-content">
