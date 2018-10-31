@@ -1,0 +1,105 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- tela respansiva -->  
+    <!-- Bootstrap-->  
+    <link type="text/css" rel="stylesheet" href="bootstrap\css\bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+    <script src="..\bootstrap\js\bootstrap.js"></script>
+    <script src="..\bootstrap\js\bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Locaweb style
+    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
+    <script src="edge\javascripts\locastyle.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
+    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
+    <!-- Jquery--> 
+    <script src="..\js\jquery.min.js"></script>
+    <script src="..\js\function.js"></script>
+    <!-- CSS--> 
+    <link type="text/css" rel="stylesheet" href="..\css\style.css">
+    <title>View students</title>
+</head>
+
+<body>
+ <div class="container"> <!-- FORMULARIO DE REGISTRO DE USUARIO-->
+        <div class="row"> 
+
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-success">  
+                    <div class="panel-heading">  
+                        <h3 class="panel-title">Registration</h3>  
+                    </div>
+                    
+                    <div class="tab-content">
+
+                        <!-- Formulario de Usuario -->
+                        <div id="regUser" class="panel-body tab-pane fade in active">  
+                            <form role="form" id="form_register_user" name="form_register_user" method="post" action="registration.php" >  
+                                <fieldset>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Username" name="name" id="name" type="text" autofocus>  
+                                    </div>  
+
+                                    <div class="form-group">  
+                                        <input class="form-control cpf-mask" placeholder="CPF" name="cpf" id="cpf" type="text"  autofocus>  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Password" name="pass" id="pass" type="password" value="" >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Confirm Password" name="cpass" id="cpass" type="password" value="" >  
+                                    </div> 
+
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Date of Birth" name="birth" id="birth" type="date" autofocus>  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="CEP" name="cep" id="cep" type="text" autofocus>  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Address" name="address" id="address" type="text" autofocus >  
+                                    </div> 
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Number" name="number" id="number" type="tel" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Complement" name="compl" id="compl" type="text" autofocus >  
+                                    </div> 
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="District" name="district" id="district"  type="text" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="City" name="city" id="city" type="text" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="State" name="state" id="state" type="text" autofocus >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1" id="phone1" type="text" autofocus >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" autofocus >  
+                                    </div>
+
+                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="register" name="register" >  
+
+                                </fieldset>  
+                            </form>  
+                              
+
+                        </div>
+
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+
+</body>  
+
+</html>  

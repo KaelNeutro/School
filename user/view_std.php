@@ -40,15 +40,15 @@
 <div class="table-scrol">
     <h1 align="center">All the Students</h1>
 
-<div class="table-responsive"><!--this is used for responsive display in mobile and other devices-->
+<div class="table-responsive container"><!--this is used for responsive display in mobile and other devices-->
 
 
-    <table class="table table-bordered table-hover table-striped" style="table-layout: fixed">
+    <table class="table table-bordered  table-striped" style="table-layout: fixed">
         <thead>
 
         <tr>
 
-            <th>Code</th>
+            
             <th>Name</th>
             <th>Date of Birth</th>
             <th>Grade</th>
@@ -78,7 +78,7 @@
 
         <tr>
 <!--here showing results in the table -->
-            <td><?php echo $std_code;  ?></td>
+            
             <td><?php echo $std_name;  ?></td>
             <td><?php echo $std_birth;  ?></td>
             <td><?php echo $std_grade;  ?></td>
@@ -90,6 +90,7 @@
         <?php } ?>
 
     </table>
+        <button class="btn btn-lg btn-primary center-block">BACK</button>
         </div>
 </div>
 
