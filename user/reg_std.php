@@ -171,7 +171,7 @@ session_start();//session starts here
 ?>
 <script type="text/javascript">
 	// Switch Registe Students
-$('document').ready(function(){
+
     
     (function(angular) {
       'use strict';
@@ -181,6 +181,6 @@ $('document').ready(function(){
     //$scope.selection = $scope.items[0];
 }]);
   })(window.angular);
-});
+
 
 </script>
