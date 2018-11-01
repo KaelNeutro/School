@@ -61,10 +61,11 @@ session_start();//session starts here
                                         $std_last=$row[5];
                                         ?>
                                         <!-- Opções Alunos -->
-                                        
-                                        <button class="btn btn-primary btn-block btn-sm" type="button" data-toggle="collapse" data-target="<?php echo '#alter'.$cont.'std'; ?>" aria-expanded="false" aria-controls="<?php echo 'alter'.$cont.'std'; ?>" style="white-space:normal; width:100%; ">
+                                        <div class="btn btn-block">
+                                        <button class=" btn-primary " type="button" data-toggle="collapse" data-target="<?php echo '#alter'.$cont.'std'; ?>" aria-expanded="false" aria-controls="<?php echo 'alter'.$cont.'std'; ?>" style="white-space:normal; width:100%; ">
                                          <?php echo $std_name; ?>
-                                     </button>
+                                         </button>
+                                        </div>
 
                                      <div class="collapse btn-block" id="<?php echo 'alter'.$cont.'std'; ?>">
                                         <div class="form-group">  
@@ -127,7 +128,7 @@ session_start();//session starts here
                                             </select>
                                         </div>  
 
-                                        <input class="btn btn-sm btn-success btn-block" type="submit" value="register" name="<?php echo 'register'.$cont.'Std'; ?>" > 
+                                        <input class="btn btn-sm btn-success btn-block" type="submit" value="UPDATE" name="<?php echo 'register'.$cont.'Std'; ?>" > 
                                     </div>
 
                                     <?php
