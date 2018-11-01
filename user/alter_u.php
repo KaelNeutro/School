@@ -43,7 +43,7 @@ session_start();//session starts here
 
                     <!-- Formulario de Usuario -->
                     <div id="regUser" class="panel-body tab-pane fade in active">  
-                        <form role="form" id="form_register_user" name="form_register_user" method="post" action="registration.php" >  
+                        <form role="form" id="form_register_user" name="form_register_user" method="post" action="alter_u.php" >  
                             <fieldset>
                                 <?php
                                 include("../database/db_conection.php");
@@ -116,7 +116,7 @@ session_start();//session starts here
                                     <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" value="<?php echo $u_ph2; ?>" autofocus >  
                                 </div>
 
-                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="register" >  
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="update" >  
 
                             </fieldset>  
                         </form>  
@@ -133,3 +133,83 @@ session_start();//session starts here
 </body>  
 
 </html>  
+
+
+<?php  
+
+include("../database/db_conection.php");//Conectando com o banco
+error_reporting(E_ALL);
+if(isset($_POST['update'])){  
+
+    $user_name=$_POST['name'];//aqui obtendo resultado da matriz post depois de enviar o formulário.
+    $user_cpf=$_SESSION['l_user'];
+    $user_pass=$_POST['pass'];
+    $user_cpass=$_POST['cpass'];
+    $user_birth=$_POST['birth'];
+    $user_cep=$_POST['cep'];
+    $user_address= addslashes($_POST['address']);
+    $user_number=$_POST['number'];
+    $user_complement=$_POST['compl'];
+    $user_district=$_POST['district'];
+    $user_city=$_POST['city'];
+    $user_state=$_POST['state'];
+    $user_phone1=$_POST['phone1'];
+    $user_phone2=$_POST['phone2'];
+
+
+
+    if($user_name=='')  // validando campos vazios
+    {  
+
+        echo"<script>alert('Please enter the name')</script>";  
+        exit();//caso este passo nao seja valido ele retornara ao formulario  
+    }
+ 
+    if($user_pass=='')  
+    {  
+        echo"<script>alert('Please enter the password')</script>";  
+        exit();  
+    }
+    if($user_cpass=='')  
+    {  
+        echo"<script>alert('Please enter the password')</script>";  
+        exit();  
+    }
+    if($user_birth=='')  
+    {  
+        echo"<script>alert('Please enter the date of birth')</script>";  
+        exit();  
+    }
+    if($user_cep=='')  
+    {  
+        echo"<script>alert('Please enter the CEP')</script>";  
+        exit();  
+    }
+    if($user_number=='')  
+    {  
+        echo"<script>alert('Please enter the number')</script>";  
+        exit();  
+    }
+    if($user_phone1=='')  
+    {  
+        echo"<script>alert('Please enter the Phone 01-(DDD) XXXX-XXXX')</script>";  
+        exit();  
+    }
+    // Complemento e telefone 02 são itens opcionais, nao precisa verificar
+    //echo"<script>alert('Passei 02')</script>";
+    
+//atualizar dados do usuario em banco de dados.  
+    $update_user="UPDATE `user` SET `name`='$user_name',`password`='$user_pass',`birth`='$user_birth',`cep`='$user_cep',`address`='$user_address',`number`='$user_number',`complement`='$user_complement',`district`='$user_district',`city`='$user_city',`state`='$user_state',`phone1`='$user_phone1',`phone2`='$user_phone2' WHERE `cpf`='$user_cpf'"; 
+ 
+
+    if(mysqli_query($dbcon,$update_user))  
+    {  
+        echo"<script>alert('Passei 05')</script>";
+        echo"<script>window.open('menuU.php','_self')</script>";  
+    } else{
+        echo "Error: " . $update_user . "<br>" . mysqli_error($dbcon);
+    }
+    mysqli_close($dbcon);
+
+}
+?>
