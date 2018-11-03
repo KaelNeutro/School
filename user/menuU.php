@@ -58,7 +58,7 @@ session_start();//session starts here
                                     User
                                 </button>
                                  <div class="collapse btn-block" id="menu-us">
-                                    <button type="button" class="btn  btn-primary btn-block"> Edit Account </button>
+                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='alter_u.php'" > Edit Account </button>
                                     <button type="button" class="btn  btn-warning btn-block"> Remove Account  </button>
 
                                 </div>
