@@ -40,10 +40,10 @@
 <div class="table-scrol">
     <h1 align="center">All the Students</h1>
 
-<div class="table-responsive container"><!--this is used for responsive display in mobile and other devices-->
+<div class="container"><!--this is used for responsive display in mobile and other devices-->
 
 
-    <table class="table table-bordered  table-striped" style="table-layout: fixed">
+    <table class="table table-bordered table-responsive  table-striped" style="table-layout: fixed">
         <thead>
 
         <tr>
