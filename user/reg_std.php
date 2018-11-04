@@ -41,7 +41,7 @@ session_start();//session starts here
 									<input class="form-control" placeholder="Name Student" name="nameStd" id="nameStd" type="text" autofocus>  
 								</div> 
 								<div class="form-group">  
-									<input class="form-control" placeholder="Date of Birth" name="birthStd" id="birthStd" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">  
+									<input class="form-control input-min-width-95p" placeholder="Date of Birth" name="birthStd" id="birthStd" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">  
 								</div>
 								<div ng-app="switch_regStd" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
