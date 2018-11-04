@@ -59,7 +59,7 @@ session_start();//session starts here
                                 </button>
                                  <div class="collapse btn-block" id="menu-us">
                                     <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='alter_u.php'" > Edit Account </button>
-                                    <button type="button" class="btn  btn-warning btn-block"> Remove Account  </button>
+                                    <button type="button" class="btn  btn-warning btn-block" onclick="window.location.href='delfulluser.php'"> Remove Account  </button>
 
                                 </div>
 
