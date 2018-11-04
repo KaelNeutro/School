@@ -38,7 +38,7 @@ session_start();//session starts here
                                 <div class="form-group">
                                     <h3> Do you really want to delete your account?</h3>
                                     <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='menuU.php'" >No, back to menu</button>
-                                    <button class="btn btn-lg btn-danger btn-block" type="submit">Yes, permanent</button>
+                                    <button class="btn btn-lg btn-danger btn-block" type="submit" name="delete">Yes, permanent</button>
                                 </div>
 
                                 
@@ -59,43 +59,29 @@ session_start();//session starts here
 
 include("../database/db_conection.php");
 
-if(isset($_POST['login']))
+if(isset($_POST['delete']))
 {
-    $user_log=$_POST['log'];
-    $user_pass=$_POST['pass'];
-    $user_type=$_POST['tpuser'];
+    $d_user=$_SESSION['l_user'];
 
-    if ($user_type == "user") {
-        # code...
-        $check_user="select * from user WHERE cpf='$user_log'AND password='$user_pass'";
-        $run=mysqli_query($dbcon,$check_user);
-        if(mysqli_num_rows($run))
-        {
 
-            $_SESSION['l_user']=$user_log;//here session is used and value of $user_email store in $_SESSION.
-            echo "<script>window.open('user/menuU.php','_self')</script>";
 
-        }
-        else
-        {
-            echo "<script>alert('User CPF or password is incorrect !')</script>";
-        }
-    } else if($user_type == "school"){
-        # code...
-        $check_user="select * from school WHERE code='$user_log'AND password='$user_pass'";
-        $run=mysqli_query($dbcon,$check_user);
-        if(mysqli_num_rows($run))
-        {
-            echo "<script>window.open('welcome.php','_self')</script>";
+    $delete_user="DELETE FROM `user` WHERE `cpf`='$d_user'"; 
+    $delete_std="DELETE FROM `students` WHERE `guardianUser`='$d_user'"; 
 
-            $_SESSION['l_user']=$user_log;//here session is used and value of $user_email store in $_SESSION.
+    $run=mysqli_query($dbcon,$delete_std);
 
-        }
-        else
-        {
-            echo "<script>alert('School Code or password is incorrect !')</script>";
-        }
+    if(mysqli_query($dbcon,$delete_user))  
+    {  
+        echo"<script>alert('Passei 05')</script>";
+        echo"<script>window.open('../Logout.php','_self')</script>";  
+    } else{
+        echo "Error: " . $delete_user . "<br>" . mysqli_error($dbcon);
     }
+    mysqli_close($dbcon);
+
+
+
+    
 
 }
 ?>
