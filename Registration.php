@@ -243,7 +243,7 @@ if(isset($_POST['register'])){
 
     if(mysqli_query($dbcon,$insert_user))  
     {  
-        echo"<script>alert('Passei 05')</script>";
+        
         echo"<script>window.open('Welcome.php','_self')</script>";  
     } else{
         echo "Error: " . $insert_user . "<br>" . mysqli_error($dbcon);
@@ -325,7 +325,7 @@ if(isset($_POST['register'])){
 
     if(mysqli_query($dbcon,$insert_user))  
     {  
-        echo"<script>alert('Passei 05')</script>";
+        
         echo"<script>window.open('Welcome.php','_self')</script>";  
     } else{
         echo "Error: " . $insert_user . "<br>" . mysqli_error($dbcon);
