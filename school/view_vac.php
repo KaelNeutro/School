@@ -1,3 +1,8 @@
+<?php
+session_start();//session starts here
+
+?>
+
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -22,7 +27,7 @@
     <script src="..\js\function.js"></script>
     <!-- CSS--> 
     <link type="text/css" rel="stylesheet" href="..\css\style.css">
-    <title>View students</title>
+    <title>View Vacancies</title>
 </head>
 <style>
     .login-panel {
@@ -38,7 +43,7 @@
 <body>
 
 <div class="table-scrol">
-    <h1 align="center">All the Students</h1>
+    <h1 align="center">All the Vacancies</h1>
 
 <div class="container"><!--this is used for responsive display in mobile and other devices-->
 
@@ -48,29 +53,26 @@
 
         <tr>
 
-            
-            <th>Name</th>
-            <th>Date of Birth</th>
-            <th>Grade</th>
             <th>Education</th>
-            <th>Last Year</th>
-            <th>Delete std</th>
+            <th>Grade</th>
+            <th>Quantity</th>
+            <th>Delete sch</th>
         </tr>
         </thead>
 
         <?php
         include("../database/db_conection.php");
-        $view_students_query="select * from students";//select query for viewing students.
-        $run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
+        $sch_sch=$_SESSION['l_user'];   
+        $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch'";//select query for viewing Vacancies.
+        $run=mysqli_query($dbcon,$view_Vacancies_query);//here run the sql query.
 
         while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
         {
-            $std_code=$row[0];
-            $std_name=$row[1];
-            $std_birth=$row[2];
-            $std_grade=$row[3];
-            $std_edu=$row[4];
-            $std_last=$row[5];
+            $sch_code=$row[0];
+            $sch_edu=$row[1];
+            $sch_grade=$row[2];
+            $sch_qtd=$row[3];
+            $sch_scho=$row[4];
 
 
 
@@ -78,19 +80,17 @@
 
         <tr>
 <!--here showing results in the table -->
-            
-            <td><?php echo $std_name;  ?></td>
-            <td><?php echo $std_birth;  ?></td>
-            <td><?php echo $std_grade;  ?></td>
-            <td><?php echo $std_edu;  ?></td>
-            <td><?php echo $std_last;  ?></td>
-            <td><a href="delete_std.php?del=<?php echo $std_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
+
+            <td><?php echo $sch_edu;  ?></td>
+            <td><?php echo $sch_grade;  ?></td>
+            <td><?php echo $sch_qtd;  ?></td>
+            <td><a href="delete_vac.php?del=<?php echo $sch_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
         </tr>
 
         <?php } ?>
 
     </table>
-        <button class="btn btn-lg btn-primary center-block" onclick="window.location.href='menuU.php'">BACK</button>
+        <button class="btn btn-lg btn-primary center-block" onclick="window.location.href='menuS.php'">BACK</button>
         </div>
 </div>
 
