@@ -22,7 +22,7 @@ session_start();//session starts here
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
 	<script src="..\js\angular\angular.min.js"></script>
 	<script src="..\js\angular\angular-animate.js"></script>
-	<title>Register Students</title>
+	<title>Register Vacancies</title>
 </head>
 <body id="rgVac">
 	<div class="container"> <!-- FORMULARIO DE REGISTRO DE ESTUDANTES-->
@@ -34,7 +34,7 @@ session_start();//session starts here
 						<h3 class="panel-title">Registration Vacancies</h3>  
 					</div>
 
-					<div id="" class="panel-body">
+					<div class="panel-body">
 						<form role="form" id="form_register_Vac" name="form_register_Vac" method="post" action="reg_Vac.php">
 							<fieldset>
 								<div ng-app="switch_regVac" > <!-- Usei Angular Switch -->
@@ -81,7 +81,7 @@ session_start();//session starts here
 							</div>
 
 							<div class="form-group">
-								<input type="number" min="1" name="qtd_Vac" class="form-control">
+								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity">
 							</div>  
 
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="registerVac" >
@@ -125,25 +125,35 @@ session_start();//session starts here
 	        exit();//caso este passo nao seja valido ele retornara ao formulario  
 	        
 	    }
+	            // Verificar se vaga ja foi registrada no banco  
+	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu'";  
+	    $run_query=mysqli_query($dbcon,$check_grade_query);  
+
+	    if(mysqli_num_rows($run_query)>0)  
+	    {  
+        //echo"<script>alert('Passei 03')</script>";
+	    	echo "<script>alert('$Vac_grade do $Vac_edu is already exist in our database, Please try another one!')</script>";  
+       		echo"<script>window.open('reg_vac.php','_self')</script>";  
+       		exit();// retorna ao formulario
+       	} 
 
     	//inserir usuario em banco de dados. 
-        $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','$Vac_guardian')";
+    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','$Vac_guardian')";
 
-        if(mysqli_query($dbcon,$insert_Vac))  
-        {  
-        	echo"<script>window.open('MenuS.php','_self')</script>";  
-        } else{
-        	echo "Error: " . $insert_Vac . "<br>" . mysqli_error($dbcon);
-        }
-        mysqli_close($dbcon);  
-
+    if(mysqli_query($dbcon,$insert_Vac))  
+    {  
+    	echo"<script>window.open('MenuS.php','_self')</script>";  
+    } else{
+    	echo "Error: " . $insert_Vac . "<br>" . mysqli_error($dbcon);
     }
-    ?>
-    <script type="text/javascript">
+    mysqli_close($dbcon);  
+
+}
+?>
+<script type="text/javascript">
 	// Switch Registe Students
 
-
-	(function(angular) {
+(function(angular) {
 		'use strict';
 		angular.module('switch_regVac', ['ngAnimate'])
 		.controller('GradeController', ['$scope', function($scope) {
@@ -151,6 +161,5 @@ session_start();//session starts here
     //$scope.selection = $scope.items[0];
 }]);
 	})(window.angular);
-
 
 </script>
