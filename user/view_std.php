@@ -1,3 +1,7 @@
+<?php
+session_start();//session starts here
+?>
+
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -60,7 +64,8 @@
 
         <?php
         include("../database/db_conection.php");
-        $view_students_query="select * from students";//select query for viewing students.
+        $std_guardian=$_SESSION['l_user'];
+        $view_students_query="select * from students WHERE guardianUser='$std_guardian'";//select query for viewing students.
         $run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
 
         while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
