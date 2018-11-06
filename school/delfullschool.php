@@ -33,11 +33,11 @@ session_start();//session starts here
                         <h3 class="panel-title">Delete Account</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="delfulluser.php">
+                        <form role="form" method="post" action="delfullschool.php">
                             <fieldset>
                                 <div class="form-group">
                                     <h3> Do you really want to delete your account?</h3>
-                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='menuU.php'" >No, back to menu</button>
+                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='menuS.php'" >No, back to menu</button>
                                     <button class="btn btn-lg btn-danger btn-block" type="submit" name="delete">Yes, permanent</button>
                                 </div>
 
@@ -61,21 +61,21 @@ include("../database/db_conection.php");
 
 if(isset($_POST['delete']))
 {
-    $d_user=$_SESSION['l_user'];
+    $d_sch=$_SESSION['l_user'];
 
 
 
-    $delete_user="DELETE FROM `user` WHERE `cpf`='$d_user'"; 
-    $delete_std="DELETE FROM `students` WHERE `guardianUser`='$d_user'"; 
+    $delete_sch="DELETE FROM `school` WHERE `code`='$d_sch'"; 
+    $delete_vac="DELETE FROM `vacancies` WHERE `school`='$d_sch'"; 
 
-    $run=mysqli_query($dbcon,$delete_std);
+    $run=mysqli_query($dbcon,$delete_vac);
 
-    if(mysqli_query($dbcon,$delete_user))  
+    if(mysqli_query($dbcon,$delete_sch))  
     {  
-        echo"<script>alert('Passei 05')</script>";
+       
         echo"<script>window.open('../Logout.php','_self')</script>";  
     } else{
-        echo "Error: " . $delete_user . "<br>" . mysqli_error($dbcon);
+        echo "Error: " . $delete_sch . "<br>" . mysqli_error($dbcon);
     }
     mysqli_close($dbcon);
 
