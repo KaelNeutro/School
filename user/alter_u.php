@@ -210,7 +210,7 @@ if(isset($_POST['update'])){
 
     if(mysqli_query($dbcon,$update_user))  
     {  
-        echo"<script>alert('Passei 05')</script>";
+        
         echo"<script>window.open('menuU.php','_self')</script>";  
     } else{
         echo "Error: " . $update_user . "<br>" . mysqli_error($dbcon);
