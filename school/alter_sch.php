@@ -43,13 +43,19 @@ session_start();//session starts here
 
                     <!-- Formulario de Usuario -->
                     <div id="regUser" class="panel-body tab-pane fade in active">  
-                        <form role="form" id="form_register_user" name="form_register_user" method="post" action="alter_u.php" >  
+                        <form role="form" id="form_register_user" name="form_register_user" method="post" action="alter_sch.php" >  
                             <fieldset>
                                 <?php
                                 include("../database/db_conection.php");
                                 $a_user=$_SESSION['l_user'];
+                                if($a_user=='') // Se o não estiver logado voltar para login novamente
+                                {  
+                                    echo"<script>alert('Please login to continue!')</script>"; 
+                                    echo"<script>window.open('../Logout.php','_self')</script>";  
+                                    exit();//caso este passo nao seja valido ele retornara ao formulario  
+                                } 
 
-                                    $view_user_query="select * from user WHERE cpf='$a_user'";//select query for viewing students.
+                                    $view_user_query="select * from school WHERE code='$a_user'";//select query for viewing students.
                                     
                                     
                                     $run=mysqli_query($dbcon,$view_user_query);//here run the sql query.
@@ -57,19 +63,18 @@ session_start();//session starts here
                                     while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
                                     { error_reporting(E_ALL);
 
-                                        $u_cpf=$row[0];
+                                        $u_code=$row[0];
                                         $u_name=$row[1];
                                         $u_pass=$row[2];
-                                        $u_birth=$row[3];
-                                        $u_cep=$row[4];
-                                        $u_addr=$row[5];
-                                        $u_num=$row[6];
-                                        $u_comp=$row[7];
-                                        $u_dist=$row[8];
-                                        $u_city=$row[9];
-                                        $u_sta=$row[10];
-                                        $u_ph1=$row[11];
-                                        $u_ph2=$row[12];
+                                        $u_cep=$row[3];
+                                        $u_addr=$row[4];
+                                        $u_num=$row[5];
+                                        $u_comp=$row[6];
+                                        $u_dist=$row[7];
+                                        $u_city=$row[8];
+                                        $u_sta=$row[9];
+                                        $u_ph1=$row[10];
+                                        $u_ph2=$row[11];
 
                                         $cont = $cont +1;
                                     }
@@ -85,9 +90,7 @@ session_start();//session starts here
                                     <input class="form-control" placeholder="Confirm Password" name="cpass" id="cpass" type="password"  >  
                                 </div> 
 
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Date of Birth" name="birth" id="birth" type="date" value="<?php echo $u_birth; ?>" autofocus>  
-                                </div>
+                               
                                 <div class="form-group">  
                                     <input class="form-control" placeholder="CEP" name="cep" id="cep" type="text" value="<?php echo $u_cep; ?>" autofocus>  
                                 </div>  
@@ -142,10 +145,9 @@ error_reporting(E_ALL);
 if(isset($_POST['update'])){  
 
     $user_name=$_POST['name'];//aqui obtendo resultado da matriz post depois de enviar o formulário.
-    $user_cpf=$_SESSION['l_user'];
+    $user_code=$_SESSION['l_user'];
     $user_pass=$_POST['pass'];
     $user_cpass=$_POST['cpass'];
-    $user_birth=$_POST['birth'];
     $user_cep=$_POST['cep'];
     $user_address= addslashes($_POST['address']);
     $user_number=$_POST['number'];
@@ -157,12 +159,7 @@ if(isset($_POST['update'])){
     $user_phone2=$_POST['phone2'];
 
 
-    if($user_cpf=='') // Se o não estiver logado voltar para login novamente
-    {  
-            echo"<script>alert('Please login to continue!')</script>"; 
-            echo"<script>window.open('../Logout.php','_self')</script>";  
-            exit();//caso este passo nao seja valido ele retornara ao formulario  
-    } 
+    
     if($user_name=='')  // validando campos vazios
     {  
 
@@ -178,11 +175,6 @@ if(isset($_POST['update'])){
     if($user_cpass=='')  
     {  
         echo"<script>alert('Please enter the password')</script>";  
-        exit();  
-    }
-    if($user_birth=='')  
-    {  
-        echo"<script>alert('Please enter the date of birth')</script>";  
         exit();  
     }
     if($user_cep=='')  
@@ -204,13 +196,13 @@ if(isset($_POST['update'])){
     //echo"<script>alert('Passei 02')</script>";
     
 //atualizar dados do usuario em banco de dados.  
-    $update_user="UPDATE `user` SET `name`='$user_name',`password`='$user_pass',`birth`='$user_birth',`cep`='$user_cep',`address`='$user_address',`number`='$user_number',`complement`='$user_complement',`district`='$user_district',`city`='$user_city',`state`='$user_state',`phone1`='$user_phone1',`phone2`='$user_phone2' WHERE `cpf`='$user_cpf'"; 
+    $update_user="UPDATE `school` SET `name`='$user_name',`password`='$user_pass',`cep`='$user_cep',`address`='$user_address',`number`='$user_number',`complement`='$user_complement',`district`='$user_district',`city`='$user_city',`state`='$user_state',`phone1`='$user_phone1',`phone2`='$user_phone2' WHERE `code`='$user_code'"; 
  
 
     if(mysqli_query($dbcon,$update_user))  
     {  
         echo"<script>alert('Passei 05')</script>";
-        echo"<script>window.open('menuU.php','_self')</script>";  
+        echo"<script>window.open('menuS.php','_self')</script>";  
     } else{
         echo "Error: " . $update_user . "<br>" . mysqli_error($dbcon);
     }
