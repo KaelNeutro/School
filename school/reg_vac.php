@@ -93,7 +93,7 @@ session_start();//session starts here
 	</div>
 </div>
 </body>
-</html>
+
 
 <?php
 	include("../database/db_conection.php");//Conectando com o banco
@@ -109,6 +109,13 @@ session_start();//session starts here
 		$Vac_edu = substr($Vac_edu, $position + 1);
 		// validando campos vazios
 		
+		if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
+        {  
+        	echo"<script>alert('Please login to continue!')</script>"; 
+        	echo"<script>window.open('../Logout.php','_self')</script>";  
+	        exit();//caso este passo nao seja valido ele retornara ao formulario  
+	        
+	    }
 		if($Vac_edu=='') 
 		{  
 			echo"<script>alert('Please enter the Education')</script>";  
@@ -125,8 +132,15 @@ session_start();//session starts here
 	        exit();//caso este passo nao seja valido ele retornara ao formulario  
 	        
 	    }
+	    if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
+        {  
+        	echo"<script>alert('Please login to continue!')</script>"; 
+        	echo"<script>window.open('../Logout.php','_self')</script>";  
+	        exit();//caso este passo nao seja valido ele retornara ao formulario  
+	        
+	    }
 	            // Verificar se vaga ja foi registrada no banco  
-	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu'";  
+	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian'";  
 	    $run_query=mysqli_query($dbcon,$check_grade_query);  
 
 	    if(mysqli_num_rows($run_query)>0)  
@@ -163,3 +177,4 @@ session_start();//session starts here
 	})(window.angular);
 
 </script>
+</html>

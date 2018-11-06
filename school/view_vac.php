@@ -62,7 +62,13 @@ session_start();//session starts here
 
         <?php
         include("../database/db_conection.php");
-        $sch_sch=$_SESSION['l_user'];   
+        $sch_sch=$_SESSION['l_user'];  
+         if($sch_sch=='') // Se o não estiver logado voltar para login novamente
+        {  
+            echo"<script>alert('Please login to continue!')</script>"; 
+            echo"<script>window.open('../Logout.php','_self')</script>";  
+            exit();//caso este passo nao seja valido ele retornara ao formulario  
+        }  
         $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch'";//select query for viewing Vacancies.
         $run=mysqli_query($dbcon,$view_Vacancies_query);//here run the sql query.
 

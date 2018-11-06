@@ -122,6 +122,12 @@ session_start();//session starts here
 		$position = strpos($std_edu,":");
 		$std_edu = substr($std_edu, $position + 1);
 		// validando campos vazios
+		 if($std_guardian=='') // Se o não estiver logado voltar para login novamente
+        {  
+            echo"<script>alert('Please login to continue!')</script>"; 
+            echo"<script>window.open('../Logout.php','_self')</script>";  
+            exit();//caso este passo nao seja valido ele retornara ao formulario  
+        } 
 		if($std_name=='') 
 		{  
 			echo"<script>alert('Please enter the name')</script>";  

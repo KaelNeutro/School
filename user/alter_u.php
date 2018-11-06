@@ -73,62 +73,62 @@ session_start();//session starts here
 
                                         $cont = $cont +1;
                                     }
-                                ?>
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Username" name="name" id="name" type="text" value="<?php echo $u_name; ?>" autofocus>  
-                                </div>  
+                                    ?>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Username" name="name" id="name" type="text" value="<?php echo $u_name; ?>" autofocus>  
+                                    </div>  
 
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Password" name="pass" id="pass" type="password" value="<?php echo $u_pass; ?>" >  
-                                </div>
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Confirm Password" name="cpass" id="cpass" type="password"  >  
-                                </div> 
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Password" name="pass" id="pass" type="password" value="<?php echo $u_pass; ?>" >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Confirm Password" name="cpass" id="cpass" type="password"  >  
+                                    </div> 
 
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Date of Birth" name="birth" id="birth" type="date" value="<?php echo $u_birth; ?>" autofocus>  
-                                </div>
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="CEP" name="cep" id="cep" type="text" value="<?php echo $u_cep; ?>" autofocus>  
-                                </div>  
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Address" name="address" id="address" type="text" value="<?php echo $u_addr; ?>" autofocus >  
-                                </div> 
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Number" name="number" id="number" type="tel" value="<?php echo $u_num; ?>" autofocus >  
-                                </div>  
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="Complement" name="compl" id="compl" type="text" value="<?php echo $u_comp; ?>" autofocus >  
-                                </div> 
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="District" name="district" id="district"  type="text" value="<?php echo $u_dist; ?>" autofocus >  
-                                </div>  
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="City" name="city" id="city" type="text" value="<?php echo $u_city; ?>" autofocus >  
-                                </div>  
-                                <div class="form-group">  
-                                    <input class="form-control" placeholder="State" name="state" id="state" type="text" value="<?php echo $u_sta; ?>" autofocus >  
-                                </div>
-                                <div class="form-group">  
-                                    <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1" id="phone1" type="text" value="<?php echo $u_ph1; ?>" autofocus >  
-                                </div>
-                                <div class="form-group">  
-                                    <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" value="<?php echo $u_ph2; ?>" autofocus >  
-                                </div>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Date of Birth" name="birth" id="birth" type="date" value="<?php echo $u_birth; ?>" autofocus>  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="CEP" name="cep" id="cep" type="text" value="<?php echo $u_cep; ?>" autofocus>  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Address" name="address" id="address" type="text" value="<?php echo $u_addr; ?>" autofocus >  
+                                    </div> 
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Number" name="number" id="number" type="tel" value="<?php echo $u_num; ?>" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="Complement" name="compl" id="compl" type="text" value="<?php echo $u_comp; ?>" autofocus >  
+                                    </div> 
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="District" name="district" id="district"  type="text" value="<?php echo $u_dist; ?>" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="City" name="city" id="city" type="text" value="<?php echo $u_city; ?>" autofocus >  
+                                    </div>  
+                                    <div class="form-group">  
+                                        <input class="form-control" placeholder="State" name="state" id="state" type="text" value="<?php echo $u_sta; ?>" autofocus >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1" id="phone1" type="text" value="<?php echo $u_ph1; ?>" autofocus >  
+                                    </div>
+                                    <div class="form-group">  
+                                        <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" value="<?php echo $u_ph2; ?>" autofocus >  
+                                    </div>
 
-                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="update" >  
+                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="update" >  
 
-                            </fieldset>  
-                        </form>  
+                                </fieldset>  
+                            </form>  
 
 
-                    </div>
+                        </div>
 
+                    </div>  
                 </div>  
             </div>  
         </div>  
     </div>  
-</div>  
 
 </body>  
 
@@ -158,13 +158,19 @@ if(isset($_POST['update'])){
 
 
 
+    if($std_cpf=='') // Se o não estiver logado voltar para login novamente
+    {  
+        echo"<script>alert('Please login to continue!')</script>"; 
+        echo"<script>window.open('../Logout.php','_self')</script>";  
+        exit();//caso este passo nao seja valido ele retornara ao formulario  
+    } 
     if($user_name=='')  // validando campos vazios
     {  
 
         echo"<script>alert('Please enter the name')</script>";  
         exit();//caso este passo nao seja valido ele retornara ao formulario  
     }
- 
+
     if($user_pass=='')  
     {  
         echo"<script>alert('Please enter the password')</script>";  
@@ -200,7 +206,7 @@ if(isset($_POST['update'])){
     
 //atualizar dados do usuario em banco de dados.  
     $update_user="UPDATE `user` SET `name`='$user_name',`password`='$user_pass',`birth`='$user_birth',`cep`='$user_cep',`address`='$user_address',`number`='$user_number',`complement`='$user_complement',`district`='$user_district',`city`='$user_city',`state`='$user_state',`phone1`='$user_phone1',`phone2`='$user_phone2' WHERE `cpf`='$user_cpf'"; 
- 
+
 
     if(mysqli_query($dbcon,$update_user))  
     {  

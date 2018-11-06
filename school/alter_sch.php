@@ -157,7 +157,12 @@ if(isset($_POST['update'])){
     $user_phone2=$_POST['phone2'];
 
 
-
+    if($user_cpf=='') // Se o não estiver logado voltar para login novamente
+    {  
+            echo"<script>alert('Please login to continue!')</script>"; 
+            echo"<script>window.open('../Logout.php','_self')</script>";  
+            exit();//caso este passo nao seja valido ele retornara ao formulario  
+    } 
     if($user_name=='')  // validando campos vazios
     {  
 

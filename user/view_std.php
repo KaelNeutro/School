@@ -65,6 +65,12 @@ session_start();//session starts here
         <?php
         include("../database/db_conection.php");
         $std_guardian=$_SESSION['l_user'];
+         if($std_guardian=='') // Se o não estiver logado voltar para login novamente
+        {  
+            echo"<script>alert('Please login to continue!')</script>"; 
+            echo"<script>window.open('../Logout.php','_self')</script>";  
+            exit();//caso este passo nao seja valido ele retornara ao formulario  
+        } 
         $view_students_query="select * from students WHERE guardianUser='$std_guardian'";//select query for viewing students.
         $run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
 

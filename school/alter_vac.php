@@ -83,8 +83,14 @@ if(isset($_POST['update'.$cont.'sch'])){
     $sch_qtd=$_POST['qtd'.$cont.'sch'];
     $sch_sch=$_SESSION['l_user'];
 
-
-        // validando campos vazios
+    if($sch_sch=='') // Se o não estiver logado voltar para login novamente
+    {  
+            echo"<script>alert('Please login to continue!')</script>"; 
+            echo"<script>window.open('../Logout.php','_self')</script>";  
+            exit();//caso este passo nao seja valido ele retornara ao formulario  
+          
+    }    
+    // validando campos vazios
     if($sch_qtd=='') 
     {  
         echo"<script>alert('Please enter the Quantity')</script>";  
