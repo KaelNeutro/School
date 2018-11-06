@@ -72,7 +72,7 @@ if(isset($_POST['delete']))
 
     if(mysqli_query($dbcon,$delete_user))  
     {  
-        echo"<script>alert('Passei 05')</script>";
+        
         echo"<script>window.open('../Logout.php','_self')</script>";  
     } else{
         echo "Error: " . $delete_user . "<br>" . mysqli_error($dbcon);
