@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Out-2018 às 00:09
+-- Generation Time: 06-Nov-2018 às 19:01
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -61,7 +61,11 @@ CREATE TABLE `school` (
 --
 
 INSERT INTO `school` (`code`, `name`, `password`, `cep`, `address`, `number`, `complement`, `district`, `city`, `state`, `phone1`, `phone2`) VALUES
-(159735, 'Escola Estadual America', '123456', '38025-110', 'Rua da ConstituiÃ§Ã£o', 1405, '', 'Nossa Senhora da Abadia', 'Uberaba', 'MG', '(034) 3312-2991', '');
+(159662, 'Escola Estadual Aurelio Luiz da Costa', '123', '38040-070', 'Rua Miguel Stefani', 1, '', 'Jardim Induberaba', 'Uberaba', 'MG', ' (034) 3336-1291', ''),
+(159735, 'Escola Estadual America', '123456', '38025-110', 'Rua da ConstituiÃ§Ã£o', 1405, '', 'Nossa Senhora da Abadia', 'Uberaba', 'MG', '(034) 3312-2991', ''),
+(159751, 'Escola Estadual Minas Gerais', '123', '38010-280', 'PraÃ§a Frei EugÃªnio', 473, '', 'Centro', 'Uberaba', 'MG', ' (034) 3332-3212', ''),
+(159786, 'Escola Estadual Bernardo Vasconcelos', '123', '38035-420', 'PraÃ§a JosÃ© Tiveron', 50, '', 'Conjunto Costa Telles I', 'Uberaba', 'MG', '(034) 3313-1707', ''),
+(160164, 'Escola Estadual IrmÃ£o Afonso', '123', '38082-258', 'Rua JosÃ© Carlos Rodrigues da Cunha JÃºnior', 160, '', 'Jardim Elza AmuÃ­ I', 'Uberaba', 'MG', '03433229197', '');
 
 -- --------------------------------------------------------
 
@@ -84,8 +88,14 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`code`, `name`, `birth`, `grade`, `education`, `lastyear`, `guardianUser`) VALUES
-(1, 'Maicon Bernades', '2008-09-09', '5th grade', 'Elementary School', 'Approved', '34567890123'),
-(8, 'Maicon Bernades Junior', '2008-09-09', '5th grade', 'Elementary School', 'Approved', '34567890123');
+(8, 'Maicon Bernades Junior', '2008-09-09', '2nd grade', 'Elementary School', 'Classified', '34567890123'),
+(9, 'Shayla Stheffany da Silva Cassiano de Assis', '2009-07-03', '3rd grade', 'Elementary School', 'Disapproved', '34567890123'),
+(10, 'Walter Rodrigues Maia', '2007-06-14', '6th grade', 'Middle School', 'Approved', '34567890123'),
+(12, 'Felipe Silva', '1999-01-01', '8th grade', 'Middle School', 'Disapproved', '34567890123'),
+(13, 'Amora Marques ', '2004-02-20', '9th grade', 'Middle School', 'Approved', '13643880'),
+(14, 'Robbie Stark', '2003-07-09', '1st grade', 'High School', 'Approved', '34567890123'),
+(15, 'Marcos Vinicius Andre Sousa', '2004-09-07', '9th grade ', 'Middle School', 'Approved', '13643880'),
+(16, 'Maiara Beatriz Sousa', '2006-09-07', '7th grade ', 'Middle School', 'Approved', '13643880');
 
 -- --------------------------------------------------------
 
@@ -114,8 +124,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`cpf`, `name`, `password`, `birth`, `cep`, `address`, `number`, `complement`, `district`, `city`, `state`, `phone1`, `phone2`) VALUES
-('2147483647', 'Maria Flores', '123', '1998-01-01', 33141, 'Rua Trinta e Um de Janeiro', 321, 'Casa', 'Padre Miguel (SÃ£o Benedito)', 'Santa Luzia', 'MG', '2147483647', '2147483647'),
-('34567890123', 'Mario Palmeiros', '123', '1967-07-09', 67120438, 'Rua Rio D\'ouro', 2312, '', 'Quarenta Horas (Coqueiro)', 'Ananindeua', 'PA', '(34) 3333-4444', '');
+('13643880', 'Alice marques', 'aaa', '1993-02-07', 38082047, 'Rua Domingos Licursi', 47, '', 'SÃ£o JosÃ©', 'Uberaba', 'MG', '34991102936', '3499088567'),
+('34567890123', 'Mario Palmeiros', '123', '1967-07-09', 67120438, 'Rua Rio D\'ouro', 2312, 'casa', 'Quarenta Horas (Coqueiro)', 'Ananindeua', 'PA', '(34) 3333-4444', '(34) 9188-7002');
 
 -- --------------------------------------------------------
 
@@ -130,6 +140,20 @@ CREATE TABLE `vacancies` (
   `quantity` int(11) NOT NULL,
   `school` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `vacancies`
+--
+
+INSERT INTO `vacancies` (`code`, `education`, `grade`, `quantity`, `school`) VALUES
+(1, 'High School', '1st grade', 8, 159751),
+(2, 'Middle School', '6th grade', 6, 159751),
+(5, 'High School', '3rd grade', 8, 160164),
+(8, 'High School', '2nd grade', 3, 160164),
+(10, 'High School', '1st grade', 3, 160164),
+(11, 'Middle School', '7th grade', 2, 160164),
+(12, 'Middle School', '8th grade', 32, 160164),
+(13, 'Middle School', '6th grade', 3, 160164);
 
 --
 -- Indexes for dumped tables
@@ -183,13 +207,13 @@ ALTER TABLE `pendency`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vacancies`
 --
 ALTER TABLE `vacancies`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
