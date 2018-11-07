@@ -140,8 +140,47 @@ $(document).ready(function(){
 });
 
 
+// Cidades e Estados
+
+$(document).ready(function () {
 
 
+    $.getJSON('../js/json/estados_cidades.json', function (data) {
+
+        var items = [];
+        var options = '<option value="" disabled selected hidden>Select a state</option>';    
+
+        $.each(data, function (key, val) {
+            options += '<option value="' + val.initials + '">' + val.name + '</option>';
+        });                 
+        $("#uf").html(options);                
+
+        $("#uf").change(function () { 
+            var tet = $("#uf option:selected").val();             
+            if (tet != "") {
+                $("#idCity").show();
+                var op_city = '';
+                var str = "";                   
+
+                $("#uf option:selected").each(function () {
+                    str += $(this).text();
+                });
+
+                $.each(data, function (key, val) {
+                    if(val.name == str) {                           
+                        $.each(val.city, function (key_city, val_city) {
+                            op_city += '<option value="' + val_city + '">' + val_city + '</option>';
+                        });                         
+                    }
+                });
+
+                $("#city").html(op_city);
+            } 
+        }).change();        
+
+    });
+
+});
 /*
 // Switch Alter Students
 $(document).ready(function(){

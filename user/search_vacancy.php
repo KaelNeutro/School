@@ -15,6 +15,7 @@ session_start();//session starts here
 	<!-- CSS--> 
 	<link type="text/css" rel="stylesheet" href="..\css\style.css">
 	<!-- Jquery--> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="..\js\jquery.min.js"></script>
 	<script src="..\js\function.js"></script>
 	<!-- Angular -->
@@ -22,7 +23,7 @@ session_start();//session starts here
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
 	<script src="..\js\angular\angular.min.js"></script>
 	<script src="..\js\angular\angular-animate.js"></script>
-	<title>Register Vacancies</title>
+	<title>Search Vacancies</title>
 </head>
 <body id="rgVac">
 	<div class="container"> <!-- FORMULARIO DE REGISTRO DE ESTUDANTES-->
@@ -31,11 +32,11 @@ session_start();//session starts here
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-panel panel panel-success">  
 					<div class="panel-heading">  
-						<h3 class="panel-title">Registration Vacancies</h3>  
+						<h3 class="panel-title">Search Vacancies</h3>  
 					</div>
 
 					<div class="panel-body">
-						<form role="form" id="form_register_Vac" name="form_register_Vac" method="post" action="reg_Vac.php">
+						<form role="form" id="form_Search_Vac" name="form_Search_Vac" method="post" action="search_vacancy.php">
 							<fieldset>
 								<div ng-app="switch_regVac" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
@@ -81,28 +82,29 @@ session_start();//session starts here
 							</div>
 
 							<div class="form-group">
-								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity">
+								<select class="form-control" id="uf"  name="uf" required>
+									
+								</select>
+							</div>
+							<div class="form-group"  id="idCity">
+								<select class="form-control" id="city" name="city" >
+								</select>
 							</div>  
 
-							<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="registerVac" >
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</body>
+							<input class="btn btn-lg btn-success btn-block" type="submit" value="Search" name="SearchVac" >
+						
+
 
 
 <?php
 	include("../database/db_conection.php");//Conectando com o banco
 	error_reporting(E_ALL);
-	if(isset($_POST['registerVac'])){
+	if(isset($_POST['SearchVac'])){
 
 		$Vac_edu= $_POST['eduVac1'];  
 		$Vac_grade=$_POST['gradeVac1'];
-		$Vac_qtd=$_POST['qtd_Vac'];
+		$Vac_uf=$_POST['uf'];
+		$Vac_city=$_POST['city'];
 		$Vac_guardian=$_SESSION['l_user'];
 
 		$position = strpos($Vac_edu,":");
@@ -115,7 +117,7 @@ session_start();//session starts here
         	echo"<script>window.open('../Logout.php','_self')</script>";  
 	        exit();//caso este passo nao seja valido ele retornara ao formulario  
 	        
-	    }
+	    } 
 		if($Vac_edu=='') 
 		{  
 			echo"<script>alert('Please enter the Education')</script>";  
@@ -126,43 +128,61 @@ session_start();//session starts here
         	echo"<script>alert('Please enter the Grade')</script>";  
         	exit();//caso este passo nao seja valido ele retornara ao formulario  
         }
-        if($Vac_qtd=='') 
+        if($Vac_city=='') 
         {  
-        	echo"<script>alert('Please enter the Last year's situation')</script>";  
+        	echo"<script>alert('Please enter the UF')</script>";  
 	        exit();//caso este passo nao seja valido ele retornara ao formulario  
 	        
 	    }
-	    if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
+	    if($Vac_uf=='') // Se o não estiver logado voltar para login novamente
         {  
-        	echo"<script>alert('Please login to continue!')</script>"; 
-        	echo"<script>window.open('../Logout.php','_self')</script>";  
+        	echo"<script>alert('Please enter the City')</script>";
+        	  
 	        exit();//caso este passo nao seja valido ele retornara ao formulario  
 	        
 	    }
-	            // Verificar se vaga ja foi registrada no banco  
-	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian'";  
-	    $run_query=mysqli_query($dbcon,$check_grade_query);  
-
-	    if(mysqli_num_rows($run_query)>0)  
-	    {  
-        //echo"<script>alert('Passei 03')</script>";
-	    	echo "<script>alert('$Vac_grade do $Vac_edu is already exist in our database, Please try another one!')</script>";  
-       		echo"<script>window.open('reg_vac.php','_self')</script>";  
-       		exit();// retorna ao formulario
-       	} 
 
     	//inserir usuario em banco de dados. 
-    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','$Vac_guardian')";
+	    $search_Vac="SELECT `vacancies`.`education`, `vacancies`.`grade`, `school`.`name`, `school`.`phone1` FROM `vacancies` INNER JOIN `school` ON vacancies.school=school.code WHERE vacancies.grade='$Vac_grade' AND vacancies.education='$Vac_edu' AND school.state='$Vac_uf' AND school.city='$Vac_city'";
+	    $run=mysqli_query($dbcon,$search_Vac);//here run the sql query.
+	    $cont = 0;
+        while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
+        {
+        	$sec_edu=$row[0];
+        	$sec_grade=$row[1];
+        	$sec_name=$row[2];
+        	$sec_ph1=$row[3];
 
-    if(mysqli_query($dbcon,$insert_Vac))  
-    {  
-    	echo"<script>window.open('MenuS.php','_self')</script>";  
-    } else{
-    	echo "Error: " . $insert_Vac . "<br>" . mysqli_error($dbcon);
-    }
-    mysqli_close($dbcon);  
+        	
 
-}
+?>
+							<button><?php echo $sec_name; ?></button>
+
+
+
+
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<?php
+        	$cont = $cont +1;
+        }
+
+	    if(mysqli_query($dbcon,$search_Vac))  
+	    {  
+	    	 
+	    	echo"<script>window.open('MenuU.php','_self')</script>";  
+	    } else{
+	    	echo "Error: " . $search_Vac . "<br>" . mysqli_error($dbcon);
+	    }
+	    mysqli_close($dbcon);  
+
+	}
 ?>
 <script type="text/javascript">
 	// Switch Registe Students
