@@ -62,9 +62,9 @@ session_start();//session starts here
                                         <!-- Opções Alunos -->
                                         <div class="btn btn-block form-group">
                                             <button class=" btn-primary btn-lg " type="button" data-toggle="collapse" data-target="<?php echo '#alter'.$cont.'sch'; ?>" aria-expanded="false" aria-controls="<?php echo 'alter'.$cont.'sch'; ?>" style="white-space:normal; width:100%; ">
-                                             <?php echo "$sch_edu"." - "."$sch_grade"; ?>
-                                         </button>
-                                     </div>
+                                               <?php echo "$sch_edu"." - "."$sch_grade"; ?>
+                                           </button>
+                                        </div>
 
                                      <div class="collapse btn-block btn-sm" id="<?php echo 'alter'.$cont.'sch'; ?>">
                                         <label for="qtd_sch">Quantity</label>
