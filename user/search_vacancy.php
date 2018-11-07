@@ -92,8 +92,8 @@ session_start();//session starts here
 							</div>  
 
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Search" name="SearchVac" >
-						
 
+							<div class="is-divider" data-content="OR"></div>
 
 
 <?php
@@ -146,23 +146,36 @@ session_start();//session starts here
 	    $search_Vac="SELECT `vacancies`.`education`, `vacancies`.`grade`, `school`.`name`, `school`.`phone1` FROM `vacancies` INNER JOIN `school` ON vacancies.school=school.code WHERE vacancies.grade='$Vac_grade' AND vacancies.education='$Vac_edu' AND school.state='$Vac_uf' AND school.city='$Vac_city'";
 	    $run=mysqli_query($dbcon,$search_Vac);//here run the sql query.
 	    $cont = 0;
-        while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
-        {
-        	$sec_edu=$row[0];
-        	$sec_grade=$row[1];
-        	$sec_name=$row[2];
-        	$sec_ph1=$row[3];
+	    if (mysqli_num_rows($run)<=0) {
+	    	# code...
+	    } else {
+	    	while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
+	    	{
+	    		$sec_edu=$row[0];
+	    		$sec_grade=$row[1];
+	    		$sec_name=$row[2];
+	    		$sec_ph1=$row[3];
 
         	
 
 ?>
-							<button><?php echo $sec_name; ?></button>
-
-
-
-
+							<div class="btn btn-block form-group">
+								<button class=" btn-primary btn-lg " type="button" data-toggle="collapse" data-target="<?php echo '#sea'.$cont; ?>" aria-expanded="false" aria-controls="<?php echo 'sea'.$cont; ?>" style="white-space:normal; width:100%; ">
+									<?php echo $sec_name; ?>
+								</button>
+							</div>
+							
+							<div class="collapse btn-block btn-sm"	 id="<?php echo 'sea'.$cont; ?>" >
+								
+							</div>
+							<?php
+										$cont = $cont +1;
+        							} //fim do Whiler
+        						} // fim do else
+        					?>
 						</fieldset>
 					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -170,13 +183,12 @@ session_start();//session starts here
 </div>
 </body>
 <?php
-        	$cont = $cont +1;
-        }
+       
 
 	    if(mysqli_query($dbcon,$search_Vac))  
 	    {  
 	    	 
-	    	echo"<script>window.open('MenuU.php','_self')</script>";  
+	    	//echo"<script>window.open('MenuU.php','_self')</script>";  
 	    } else{
 	    	echo "Error: " . $search_Vac . "<br>" . mysqli_error($dbcon);
 	    }
