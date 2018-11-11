@@ -18,11 +18,7 @@ session_start();//session starts here
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="..\js\jquery.min.js"></script>
 	<script src="..\js\function.js"></script>
-	<!-- Angular -->
-	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
-	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Choose Vacancies</title>
 </head>
 <body id="rgVac">
@@ -36,8 +32,7 @@ session_start();//session starts here
 					</div>
 
 					<div class="panel-body">
-						<form role="form" id="form_Search_Vac" name="form_Search_Vac" method="post" action="">
-							<fieldset>
+					
 <?php
 	include("../database/db_conection.php");//Conectando com o banco
 	error_reporting(E_ALL);
@@ -102,7 +97,12 @@ session_start();//session starts here
         	
 
 ?>
+<form role="form" id="form_Search_Vac" name="form_Search_Vac" method="post" action="select_std.php">
+						<fieldset>
 							<input type="hidden" name="<?php echo 'seccode'.$cont; ?>" value="<?php echo $sec_code; ?>">
+							<input type="hidden" name="<?php echo 'secedu'.$cont; ?>" value="<?php echo $sec_edu; ?>">
+							<input type="hidden" name="<?php echo 'secgrade'.$cont; ?>" value="<?php echo $sec_grade; ?>">
+							<input type="hidden" name="cont" value="<?php echo $cont; ?>">
 							<div class="btn btn-block form-group">
 								<button class=" btn-primary btn-lg " type="button" data-toggle="collapse" data-target="<?php echo '#sea'.$cont; ?>" aria-expanded="false" aria-controls="<?php echo 'sea'.$cont; ?>" style="white-space:normal; width:100%; ">
 									<?php echo $sec_name; ?>
@@ -115,23 +115,17 @@ session_start();//session starts here
 								  	<b>Telefone:</b> <?php echo $sec_ph1; ?> </h4>
 								</div>
 								
-								<button class="btn btn-block btn-sm btn-success" name="<?php echo "ch".$cont; ?>" type="submit" >Chosse</button>
+								<button class="btn btn-block btn-sm btn-success" name="<?php echo 'ch'.$cont; ?>" type="submit" >Chosse</button>
 
 							</div>
+							</fieldset>
+					</form>
 							<?php
-										if(isset($_POST['ch'.$cont])){
-											# code...
-										
-											
-										}
-
-
 										$cont = $cont +1;
         							} //fim do Whiler
         						} // fim do else
         					?>
-						</fieldset>
-					</form>
+						
 					
 				</div>
 			</div>
