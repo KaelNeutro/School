@@ -85,6 +85,9 @@ session_start();//session starts here
 	    $cont = 0;
 	    if (mysqli_num_rows($run)<=0) {
 	    	# code...
+	    	echo"<script>alert('No vacancies!')</script>";
+	    	echo"<script>window.open('search_vacancy.php','_self')</script>";  
+	    	exit();
 	    } else {
 	    	while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
 	    	{
