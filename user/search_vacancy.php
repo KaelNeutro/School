@@ -2,24 +2,33 @@
 session_start();//session starts here
 
 include("../database/db_conection.php");//Conectando com o banco
-   if(isset($_POST['btnstd'])){
-      $std_code=$_POST['slc_std'];
-      $Vac_code=$_POST['Vac_code'];
-      $insert_pdc ="INSERT INTO `pendency`(`code`, `request_date`, `situation`, `date_answer`, `students`, `vacancy`) VALUES ('',CURRENT_TIMESTAMP,'pending',null,'$std_code','$Vac_code')";
-      
-      if(mysqli_query($dbcon,$insert_pdc))  
-       {  
-          
-         echo"<script>window.open('search_vacancy.php','_self')</script>";  
-       } else{
-         echo "Error: " .$insert_pdc . "<br>" . mysqli_error($dbcon);
-       }
-       mysqli_close($dbcon);  
-   }
+if(isset($_POST['btnstd'])){
+	$std_code=$_POST['slc_std'];
+	$Vac_code=$_POST['Vac_code'];
+      // Verificar usuario ja foi registrado no banco  
+	$check_pd_query="SELECT * FROM `pendency` WHERE students='$std_code' AND vacancy='$Vac_code' AND situation='pending'";  
+	$run_query=mysqli_query($dbcon,$check_pd_query);
+	if(mysqli_num_rows($run_query)>0)  
+	{  
+		echo "<script>alert('Pendency is already exist in our database, Please try another one!')</script>"; 
+		echo"<script>window.open('search_vacancy.php','_self')</script>";  // retorna ao formulario
+        exit(); // Não prosseguir as proximas linhas
+        }
+        $insert_pdc ="INSERT INTO `pendency`(`code`, `request_date`, `situation`, `date_answer`, `students`, `vacancy`) VALUES ('',CURRENT_TIMESTAMP,'pending',null,'$std_code','$Vac_code')";
+
+        if(mysqli_query($dbcon,$insert_pdc))  
+        {  
+
+        	echo"<script>window.open('search_vacancy.php','_self')</script>";  
+        } else{
+        	echo "Error: " .$insert_pdc . "<br>" . mysqli_error($dbcon);
+        }
+        mysqli_close($dbcon);  
+    }
 
 
 
-?>
+    ?>
 
 <html>
 <head lang="en">
