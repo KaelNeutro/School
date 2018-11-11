@@ -34,13 +34,12 @@ include("../database/db_conection.php");//Conectando com o banco
 	<link type="text/css" rel="stylesheet" href="..\css\style.css">
 	<!-- Jquery--> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="..\js\jquery.min.js"></script>
+
 	<script src="..\js\function.js"></script>
 	<!-- Angular -->
 	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Search Vacancies</title>
 </head>
 <body id="rgVac">
