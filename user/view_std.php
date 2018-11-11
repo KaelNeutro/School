@@ -16,12 +16,7 @@ session_start();//session starts here
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Locaweb style
-    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
-    <script src="edge\javascripts\locastyle.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
-    <!-- Jquery--> 
+     <!-- Jquery--> 
     <script src="..\js\jquery.min.js"></script>
     <script src="..\js\function.js"></script>
     <!-- CSS--> 
