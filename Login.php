@@ -44,7 +44,7 @@ if (isset($_SESSION['l_user'])){
                                     </div>
                                     <div class="divider" style="float: left;position: relative;width: 5px;height: 32px;"></div>
                                     <div class="form-group funkyradio-success" style="position: relative; float: left; width:auto; ">
-                                        <input  type="radio" name="tpuser" id="tpschool" value="school" ">
+                                        <input  type="radio" name="tpuser" id="tpschool" value="school">
                                         <label for="tpschool" style="width: 147px;">School</label>
                                     </div>
                                 </div>
