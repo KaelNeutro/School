@@ -49,7 +49,7 @@ session_start();//session starts here
                                     Vacancies
                                 </button>
                                 <div class="collapse btn-block" id="menu-va">
-                                    <button type="button" class="btn  btn-primary btn-block"> Vacancy </button>
+                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='search_vacancy.php'"> Vacancy </button>
                                     <button type="button" class="btn  btn-primary btn-block"> Situation  </button>
 
                                 </div>
