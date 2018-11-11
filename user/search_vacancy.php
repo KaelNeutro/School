@@ -1,6 +1,24 @@
 <?php
 session_start();//session starts here
 
+include("../database/db_conection.php");//Conectando com o banco
+   if(isset($_POST['btnstd'])){
+      $std_code=$_POST['slc_std'];
+      $Vac_code=$_POST['Vac_code'];
+      $insert_pdc ="INSERT INTO `pendency`(`code`, `request_date`, `situation`, `date_answer`, `students`, `vacancy`) VALUES ('',CURRENT_TIMESTAMP,'pending',null,'$std_code','$Vac_code')";
+      
+      if(mysqli_query($dbcon,$insert_pdc))  
+       {  
+          
+         echo"<script>window.open('search_vacancy.php','_self')</script>";  
+       } else{
+         echo "Error: " .$insert_pdc . "<br>" . mysqli_error($dbcon);
+       }
+       mysqli_close($dbcon);  
+   }
+
+
+
 ?>
 
 <html>
