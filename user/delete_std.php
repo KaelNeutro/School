@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ehtesham Mehmood
- * Date: 11/24/2014
- * Time: 11:55 PM
- */
+
 include("../database/db_conection.php");
 $delete_id=$_GET['del'];
 $delete_query="delete  from students WHERE code='$delete_id'";//delete query

@@ -1,5 +1,21 @@
 <?php
 session_start();//session starts here
+include("../database/db_conection.php");//Conectando com o banco
+$std_guardian=$_SESSION['l_user'];
+$c_cont=$_POST['cont'];
+$Vac_edu= $_POST['secedu'.$c_cont];  
+$Vac_grade=$_POST['secgrade'.$c_cont];
+$Vac_code=$_POST['seccode'.$c_cont];
+
+
+$view_students_query="select * from students WHERE guardianUser='$std_guardian' AND grade='$Vac_grade' AND education='$Vac_edu'";//select query for viewing students.
+$run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
+if(mysqli_num_rows($run)<=0)  
+      {  
+         echo "<script>alert('Not there students in our database, Please try another one!')</script>";
+         echo"<script>window.open('search_vacancy.php','_self')</script>";    
+         exit(); // retorna ao formulario
+      }
 ?>
 <html>
 <head lang="en">
@@ -36,16 +52,7 @@ session_start();//session starts here
                         <div class="funkyradio">
 <?php
 
-include("../database/db_conection.php");//Conectando com o banco
-$std_guardian=$_SESSION['l_user'];
-$c_cont=$_POST['cont'];
-$Vac_edu= $_POST['secedu'.$c_cont];  
-$Vac_grade=$_POST['secgrade'.$c_cont];
-$Vac_code=$_POST['seccode'.$c_cont];
 
-
-$view_students_query="select * from students WHERE guardianUser='$std_guardian' AND grade='$Vac_grade' AND education='$Vac_edu'";//select query for viewing students.
-$run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
 $cont=0;
 while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
 {
@@ -70,6 +77,7 @@ $cont = $cont+1;
                         </div>
                      </fieldset>
                   </form>
+                  <button class="btn btn-lg btn-danger btn-block center-block" onclick="window.location.href='menuU.php'">BACK</button>
                </div>
             </div>
          </div>

@@ -117,11 +117,10 @@ session_start();//session starts here
                                     </div>
 
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="update" >  
+                                    <button class="btn btn-lg btn-danger btn-block center-block" type="button" onclick="window.location.href='menuU.php'">BACK</button>
 
                                 </fieldset>  
                             </form>  
-
-
                         </div>
 
                     </div>  

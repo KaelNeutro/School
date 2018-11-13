@@ -121,7 +121,7 @@ if(isset($_POST['btnstd'])){
 
 						</fieldset>
 					</form>
-					
+					<button class="btn btn-lg btn-danger btn-block center-block" onclick="window.location.href='menuU.php'">BACK</button>
 				</div>
 			</div>
 		</div>
