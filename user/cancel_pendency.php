@@ -7,7 +7,7 @@ $run=mysqli_query($dbcon,$cancel_query);
 if($run)
 {
 //javascript function to open in the same window
-    echo "<script>window.open('pendency_view.php? has been canceled','_self')</script>";
+    echo "<script>window.open('pending_view.php? has been canceled','_self')</script>";
 }
 
 ?>

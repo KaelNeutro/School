@@ -90,7 +90,7 @@ session_start();//session starts here
         <?php } ?>
 
     </table>
-        <button class="btn btn-lg btn-danger btn-block center-block" onclick="window.location.href='menuU.php'">BACK</button>
+        <button class="btn btn-lg btn-danger center-block" onclick="window.location.href='menuU.php'">BACK</button>
         </div>
 </div>
 
