@@ -1,5 +1,14 @@
 <?php
 session_start();//session starts here
+include("../database/db_conection.php");
+$Vac_guardian=$_SESSION['l_user'];
+if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+}
+?>
 
 ?>
 
@@ -96,14 +105,14 @@ session_start();//session starts here
 
 
 <?php
-	include("../database/db_conection.php");//Conectando com o banco
+	
 	error_reporting(E_ALL);
 	if(isset($_POST['registerVac'])){
 
 		$Vac_edu= $_POST['eduVac1'];  
 		$Vac_grade=$_POST['gradeVac1'];
 		$Vac_qtd=$_POST['qtd_Vac'];
-		$Vac_guardian=$_SESSION['l_user'];
+		
 
 		$position = strpos($Vac_edu,":");
 		$Vac_edu = substr($Vac_edu, $position + 1);

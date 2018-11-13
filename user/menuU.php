@@ -50,10 +50,10 @@ session_start();//session starts here
                                 </button>
                                 <div class="collapse btn-block" id="menu-va">
                                     <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='search_vacancy.php'"> <span class="glyphicon glyphicon-search"></span> Vacancy </button>
-                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='sl_pd_std.php?sit=pending'">Pending </button>
-                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='sl_pd_std.php?sit=accepted'">Accepted </button>
-                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='sl_pd_std.php?sit=canceled'">Canceled </button>
-                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='sl_pd_std.php?sit=declined'">Declined</button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=pending'">Pending </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=accepted'">Accepted </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=canceled'">Canceled </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=declined'">Declined</button>
 
                                 </div>
                                 <!-- Opções Usuario-->

@@ -55,15 +55,16 @@ table{
     border-bottom: #999999 solid 1px;
     width: 100%;
     margin-bottom: 20px;
+    margin-top: 10px;
   }
 
   .table th,
   .table td {
     border-right: #999999 solid 1px;
     font-size: 12px;
-    padding: 8px;
+    padding: 4px;
     line-height: 20px;
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
   }
 

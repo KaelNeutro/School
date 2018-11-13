@@ -1,5 +1,13 @@
 <?php
 session_start();//session starts here
+include("../database/db_conection.php");
+$a_user=$_SESSION['l_user'];
+if($a_user=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+} 
 
 ?>
 <html>
@@ -46,15 +54,7 @@ session_start();//session starts here
                         <form role="form" id="form_register_user" name="form_register_user" method="post" action="alter_sch.php" >  
                             <fieldset>
                                 <?php
-                                include("../database/db_conection.php");
-                                $a_user=$_SESSION['l_user'];
-                                if($a_user=='') // Se o não estiver logado voltar para login novamente
-                                {  
-                                    echo"<script>alert('Please login to continue!')</script>"; 
-                                    echo"<script>window.open('../Logout.php','_self')</script>";  
-                                    exit();//caso este passo nao seja valido ele retornara ao formulario  
-                                } 
-
+                                
                                     $view_user_query="select * from school WHERE code='$a_user'";//select query for viewing students.
                                     
                                     

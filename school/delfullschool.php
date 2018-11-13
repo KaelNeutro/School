@@ -1,6 +1,13 @@
 <?php
 session_start();//session starts here
-
+include("../database/db_conection.php");
+$d_sch=$_SESSION['l_user'];
+if($d_sch=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+}
 ?>
 
 
