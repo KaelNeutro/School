@@ -115,6 +115,26 @@ $(document).ready(function() {
                 }
             });
         });
+
+/*//Codigo Escola
+$(document).ready(function(){
+   var nameS =  $('#nameSchool').val();
+   var cityS =  $('#citySchool').val();
+   var  ufS = $("#stateSchool").val();
+   $("#cepSchool").blur(function() {
+      $.getJSON("http://educacao.dadosabertosbr.com/api/escolas?nome="+nameS, function(data) {
+         if (!("erro" in data)) {
+            if (data.estado==ufS) && (data.cidade) {
+               $("#codeSchool").val(data);
+            }
+         }
+      });
+   });
+
+});
+*/
+
+
 //Confirmar senha
 $(document).ready(function(){
 
