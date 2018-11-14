@@ -62,7 +62,7 @@ include("../database/db_conection.php");
         <tr> 
 
             
-            <th>Request2</th>
+            <th>Request</th>
             <th>Students</th>
             <th>District</th>
             <th>Phone</th>
