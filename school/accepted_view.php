@@ -46,7 +46,7 @@ include("../database/db_conection.php");
 
 <div class="container"><!--this is used for responsive display in mobile and other devices-->
     <?php
-    $gradeDB = "SELECT a.grade, a.education FROM vacancies a INNER JOIN pendency b ON (a.code = b.vacancy) WHERE school='$sch_dp' AND b.situation='accepted'  ORDER BY a.education, a.grade";
+    $gradeDB = "SELECT a.grade, a.education FROM vacancies a INNER JOIN pendency b ON (a.code = b.vacancy) WHERE school='$sch_dp' AND b.situation='accepted'  GROUP by 1,2 ORDER BY a.education, a.grade";
     $runS = mysqli_query($dbcon,$gradeDB );
     while($row=mysqli_fetch_array($runS))
     {
