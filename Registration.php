@@ -13,14 +13,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Locaweb style
-    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
-    <script src="edge\javascripts\locastyle.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
+
+
     <!-- Jquery--> 
     <script src="js\jquery.min.js"></script>
+    <script src="js\jquery.maskedinput.js"></script>
     <script src="js\function.js"></script>
+
     <!-- CSS--> 
     <link type="text/css" rel="stylesheet" href="css\style.css">
     <title>Registration User</title>    
@@ -84,10 +83,10 @@
                                         <input class="form-control" placeholder="State" name="state" id="state" type="text" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1" id="phone1" type="text" autofocus >  
+                                        <input class="form-control phone-ddd-mask" placeholder="Telephone" name="phone1" id="phone1" type="text" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" autofocus >  
+                                        <input class="form-control cel-sp-mask" placeholder="Cell Phone" name="phone2" id="phone2" type="text" autofocus >  
                                     </div>
 
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="register" name="register" >  
@@ -137,10 +136,10 @@
                                         <input class="form-control" placeholder="State" name="stateSchool" id="stateSchool" type="text" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1School" id="phone1School" type="text" autofocus >  
+                                        <input class="form-control phone-ddd-mask" placeholder="Telephone" name="phone1School" id="phone1School" type="text" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2School" id="phone2School" type="text" autofocus >  
+                                        <input class="form-control cel-sp-mask" placeholder="Cell Phone" name="phone2School" id="phone2School" type="text" autofocus >  
                                     </div>
 
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="register" name="registerSchool" >  

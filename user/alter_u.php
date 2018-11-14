@@ -16,11 +16,8 @@ session_start();//session starts here
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Locaweb style
-    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
-    <script src="edge\javascripts\locastyle.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
+    <!---->
+    -->
     <!-- Jquery--> 
     <script src="..\js\jquery.min.js"></script>
     <script src="..\js\function.js"></script>
@@ -110,10 +107,10 @@ session_start();//session starts here
                                         <input class="form-control" placeholder="State" name="state" id="state" type="text" value="<?php echo $u_sta; ?>" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control phone-ddd-mask" placeholder="Phone 01-(DDD) XXXX-XXXX" name="phone1" id="phone1" type="text" value="<?php echo $u_ph1; ?>" autofocus >  
+                                        <input class="form-control phone-ddd-mask" placeholder="Telephone" name="phone1" id="phone1" type="text" value="<?php echo $u_ph1; ?>" autofocus >  
                                     </div>
                                     <div class="form-group">  
-                                        <input class="form-control cel-sp-mask" placeholder="Phone 02-(DDD) XXXX-XXXX" name="phone2" id="phone2" type="text" value="<?php echo $u_ph2; ?>" autofocus >  
+                                        <input class="form-control cel-sp-mask" placeholder="Cell Phone" name="phone2" id="phone2" type="text" value="<?php echo $u_ph2; ?>" autofocus >  
                                     </div>
 
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Update" name="update" >  

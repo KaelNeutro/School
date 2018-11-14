@@ -1,4 +1,19 @@
 
+//Mascara de formulario
+$(document).ready(function() {
+   jQuery(function($){
+      $('#cpf').mask("999.999.999-99");
+      $("#phone1").mask("(99)9999-9999");
+      $("#phone2").mask("(99)99999-9999");
+      $("#cep").mask("99999-999");
+      $("#phone1School").mask("(99)9999-9999");
+      $("#phone2School").mask("(99)99999-9999");
+      $("#cepSchool").mask("99999-999");
+
+   });
+});
+
+
 //Buscar Endereço pelo CEP Usuario
 $(document).ready(function() {
     function clean_form_cep() {
