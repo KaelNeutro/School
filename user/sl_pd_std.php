@@ -54,6 +54,7 @@ $sit=$_GET['sit'];
                             <fieldset>
                                 <!-- Alunos -->
                                 <input type="hidden" name="std" value="<?php echo $std_code; ?>">
+                                <?php $_SESSION['l_std']=$std_code; ?>
                                 <button class="btn btn-primary btn-block btn-lg" type="submit">
                                     <?php echo $std_name;  ?>
                                 </button>

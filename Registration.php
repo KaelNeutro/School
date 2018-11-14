@@ -93,7 +93,7 @@
 
                                 </fieldset>  
                             </form>  
-                            <center></br><b>Already registered ?</b> </br></br><a href="login.php">Login here</a></center><!--for centered text-->  
+                            <center></br><b>Already registered ?</b> </br><a href="login.php">Login here</a></center><!--for centered text-->  
 
                         </div>
                         <!-- Formulario de Escola -->
@@ -146,7 +146,7 @@
 
                                 </fieldset>  
                             </form>  
-                            <center></br><b>Already registered ?</b> </br></br><a href="login.php">Login here</a></center>
+                            <center></br><b>Already registered ?</b> </br><a href="login.php">Login here</a></center>
                         </div> 
                     </div>  
                 </div>  

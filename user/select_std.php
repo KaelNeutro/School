@@ -62,7 +62,7 @@ while($row=mysqli_fetch_array($run))//while look to fetch the result and store i
 
 
                            <div class="funkyradio-primary ">
-                              <input type="radio" name="slc_std" id="<?php echo "slc_std".$cont; ?>" value="<?php echo $std_code; ?>">
+                              <input type="radio" name="slc_std" id="<?php echo "slc_std".$cont; ?>" value="<?php echo $std_code; ?>" required >
                               <label for="<?php echo "slc_std".$cont; ?>"><?php echo $std_name; ?></label>
                            </div>
                            <input type="hidden" name="Vac_code" value="<?php echo $Vac_code; ?>">

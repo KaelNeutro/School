@@ -27,8 +27,7 @@ if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
 	<!-- Angular -->
 	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Register Vacancies</title>
 </head>
 <body id="rgVac">

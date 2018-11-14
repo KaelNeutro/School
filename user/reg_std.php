@@ -20,8 +20,7 @@ session_start();//session starts here
     <!-- Angular -->
     <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
     <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-    <script src="..\js\angular\angular.min.js"></script>
-    <script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Register Students</title>
 </head>
 <body id="rgSTD">

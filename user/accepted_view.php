@@ -62,7 +62,7 @@ session_start();//session starts here
 
         <?php
         include("../database/db_conection.php");
-        $std=$_POST['std'];
+        $std=$_SESSION['l_std'];
         $view_students_query="SELECT c.code, c.request_date, a.name,b.grade,b.education,c.date_answer FROM pendency c INNER JOIN vacancies b ON (c.vacancy = b.code) INNER JOIN school a ON (b.school = a.code) WHERE c.situation='accepted' AND c.students='$std'";//select query for viewing students.
         $run=mysqli_query($dbcon,$view_students_query);//here run the sql query.
 
