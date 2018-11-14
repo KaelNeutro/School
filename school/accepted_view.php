@@ -59,10 +59,10 @@ include("../database/db_conection.php");
     <h3 align="center"> <?php echo $gr." - ".$ed; ?> </h3>
     <table class="table table-bordered table-responsive  table-striped" style="table-layout: fixed">
         <thead>
-        <tr>
+        <tr> 
 
             
-            <th>Request</th>
+            <th>Request2</th>
             <th>Students</th>
             <th>District</th>
             <th>Phone</th>
