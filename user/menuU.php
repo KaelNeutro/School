@@ -28,7 +28,7 @@ session_start();//session starts here
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Menu Usuário</h3>
+                        <h3 class="panel-title">Menu User</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="login.php">
@@ -49,8 +49,11 @@ session_start();//session starts here
                                     Vacancies
                                 </button>
                                 <div class="collapse btn-block" id="menu-va">
-                                    <button type="button" class="btn  btn-primary btn-block"> Vacancy </button>
-                                    <button type="button" class="btn  btn-primary btn-block"> Situation  </button>
+                                    <button type="button" class="btn  btn-primary btn-block" onclick="window.location.href='search_vacancy.php'"> <span class="glyphicon glyphicon-search"></span> Vacancy </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=pending'">Pending </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=accepted'">Accepted </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=canceled'">Canceled </button>
+                                    <button type="button" class="btn  btn-info btn-block" onclick="window.location.href='sl_pd_std.php?sit=declined'">Declined</button>
 
                                 </div>
                                 <!-- Opções Usuario-->
@@ -63,7 +66,7 @@ session_start();//session starts here
 
                                 </div>
 
-                                <button class="btn btn-danger btn-block btn-lg" type="button" data-toggle="collapse"aria-expanded="false" onclick="location.href='../Logout.php'" >
+                                <button class="btn btn-danger btn-block btn-lg" type="button" data-toggle="collapse"aria-expanded="false" onclick="location.href='../Logout.php'" ><span class="oi oi-power-standby"></span>
                                     Logout
                                 </button>
                                 

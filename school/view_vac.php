@@ -1,6 +1,14 @@
 <?php
 session_start();//session starts here
 
+include("../database/db_conection.php");
+$sch_sch=$_SESSION['l_user'];  
+if($sch_sch=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+} 
 ?>
 
 <html>
@@ -17,11 +25,8 @@ session_start();//session starts here
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Locaweb style
-    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
-    <script src="edge\javascripts\locastyle.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
+    <!---->
+    -->
     <!-- Jquery--> 
     <script src="..\js\jquery.min.js"></script>
     <script src="..\js\function.js"></script>
@@ -61,15 +66,8 @@ session_start();//session starts here
         </thead>
 
         <?php
-        include("../database/db_conection.php");
-        $sch_sch=$_SESSION['l_user'];  
-         if($sch_sch=='') // Se o não estiver logado voltar para login novamente
-        {  
-            echo"<script>alert('Please login to continue!')</script>"; 
-            echo"<script>window.open('../Logout.php','_self')</script>";  
-            exit();//caso este passo nao seja valido ele retornara ao formulario  
-        }  
-        $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch'";//select query for viewing Vacancies.
+         
+        $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch' AND del='0'";//select query for viewing Vacancies.
         $run=mysqli_query($dbcon,$view_Vacancies_query);//here run the sql query.
 
         while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
@@ -90,7 +88,7 @@ session_start();//session starts here
             <td><?php echo $sch_edu;  ?></td>
             <td><?php echo $sch_grade;  ?></td>
             <td><?php echo $sch_qtd;  ?></td>
-            <td><a href="delete_vac.php?del=<?php echo $sch_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
+            <td><a href="delete_vac.php?dell=<?php echo $sch_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
         </tr>
 
         <?php } ?>

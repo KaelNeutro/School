@@ -20,8 +20,7 @@ session_start();//session starts here
     <!-- Angular -->
     <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
     <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-    <script src="..\js\angular\angular.min.js"></script>
-    <script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Register Students</title>
 </head>
 <body id="rgSTD">
@@ -100,6 +99,7 @@ session_start();//session starts here
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="registerStd" >
 						</fieldset>
 					</form>
+					<button class="btn btn-lg btn-danger btn-block center-block" onclick="window.location.href='menuU.php'">BACK</button>
 				</div>
 			</div>
 		</div>

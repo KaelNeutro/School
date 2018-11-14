@@ -1,6 +1,13 @@
 <?php
 session_start();//session starts here
-
+include("../database/db_conection.php");
+$sch_sch=$_SESSION['l_user'];
+if($sch_sch=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+} 
 ?>
 
 <html>
@@ -37,9 +44,6 @@ session_start();//session starts here
                         <form role="form" method="post" action="alter_sch.php">
                             <fieldset>
                                 <?php
-                                include("../database/db_conection.php");
-                                $sch_sch=$_SESSION['l_user'];
-
                                     $view_vacancies_query="select * from vacancies WHERE school='$sch_sch'";//select query for viewing vacancies.
                                     $run_query=mysqli_query($dbcon,$view_vacancies_query);
                                     if(mysqli_num_rows($run_query)<=0)  
@@ -116,6 +120,7 @@ $cont = $cont + 1;
 ?>                      
 </fieldset>
 </form>
+<button class="btn btn-lg btn-danger center-block" onclick="window.location.href='menuS.php'">BACK</button>
 </div>
 </div>
 </div>

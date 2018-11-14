@@ -1,6 +1,13 @@
 <?php
 session_start();//session starts here
-
+include("../database/db_conection.php");
+$Vac_guardian=$_SESSION['l_user'];
+if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+}
 ?>
 
 <html>
@@ -20,8 +27,7 @@ session_start();//session starts here
 	<!-- Angular -->
 	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Register Vacancies</title>
 </head>
 <body id="rgVac">
@@ -81,12 +87,13 @@ session_start();//session starts here
 							</div>
 
 							<div class="form-group">
-								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity">
+								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity" required>
 							</div>  
 
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="registerVac" >
 						</fieldset>
 					</form>
+					<button class="btn btn-lg btn-danger center-block" onclick="window.location.href='menuS.php'">BACK</button>
 				</div>
 			</div>
 		</div>
@@ -96,14 +103,14 @@ session_start();//session starts here
 
 
 <?php
-	include("../database/db_conection.php");//Conectando com o banco
+	
 	error_reporting(E_ALL);
 	if(isset($_POST['registerVac'])){
 
 		$Vac_edu= $_POST['eduVac1'];  
 		$Vac_grade=$_POST['gradeVac1'];
 		$Vac_qtd=$_POST['qtd_Vac'];
-		$Vac_guardian=$_SESSION['l_user'];
+		
 
 		$position = strpos($Vac_edu,":");
 		$Vac_edu = substr($Vac_edu, $position + 1);
@@ -140,7 +147,7 @@ session_start();//session starts here
 	        
 	    }
 	            // Verificar se vaga ja foi registrada no banco  
-	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian'";  
+	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian' AND del='0'";  
 	    $run_query=mysqli_query($dbcon,$check_grade_query);  
 
 	    if(mysqli_num_rows($run_query)>0)  
@@ -152,7 +159,7 @@ session_start();//session starts here
        	} 
 
     	//inserir usuario em banco de dados. 
-    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','$Vac_guardian')";
+    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `del`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','0','$Vac_guardian')";
 
     if(mysqli_query($dbcon,$insert_Vac))  
     {  

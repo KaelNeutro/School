@@ -1,4 +1,19 @@
 
+//Mascara de formulario
+$(document).ready(function() {
+   jQuery(function($){
+      $('#cpf').mask("999.999.999-99");
+      $("#phone1").mask("(99)9999-9999");
+      $("#phone2").mask("(99)99999-9999");
+      $("#cep").mask("99999-999");
+      $("#phone1School").mask("(99)9999-9999");
+      $("#phone2School").mask("(99)99999-9999");
+      $("#cepSchool").mask("99999-999");
+
+   });
+});
+
+
 //Buscar Endereço pelo CEP Usuario
 $(document).ready(function() {
     function clean_form_cep() {
@@ -115,6 +130,26 @@ $(document).ready(function() {
                 }
             });
         });
+
+/*//Codigo Escola
+$(document).ready(function(){
+   var nameS =  $('#nameSchool').val();
+   var cityS =  $('#citySchool').val();
+   var  ufS = $("#stateSchool").val();
+   $("#cepSchool").blur(function() {
+      $.getJSON("http://educacao.dadosabertosbr.com/api/escolas?nome="+nameS, function(data) {
+         if (!("erro" in data)) {
+            if (data.estado==ufS) && (data.cidade) {
+               $("#codeSchool").val(data);
+            }
+         }
+      });
+   });
+
+});
+*/
+
+
 //Confirmar senha
 $(document).ready(function(){
 

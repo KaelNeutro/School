@@ -1,5 +1,13 @@
 <?php
 session_start();//session starts here
+include("../database/db_conection.php");
+$a_user=$_SESSION['l_user'];
+if($a_user=='') // Se o não estiver logado voltar para login novamente
+{  
+    echo"<script>alert('Please login to continue!')</script>"; 
+    echo"<script>window.open('../Logout.php','_self')</script>";  
+    exit();//caso este passo nao seja valido ele retornara ao formulario  
+} 
 
 ?>
 <html>
@@ -16,11 +24,8 @@ session_start();//session starts here
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Locaweb style
-    <link type="text/css" rel="stylesheet" href="edge\stylesheets\locastyle.css">
-    <script src="edge\javascripts\locastyle.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-    <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script> 
+    <!---->
+    -->
     <!-- Jquery--> 
     <script src="..\js\jquery.min.js"></script>
     <script src="..\js\function.js"></script>
@@ -46,15 +51,7 @@ session_start();//session starts here
                         <form role="form" id="form_register_user" name="form_register_user" method="post" action="alter_sch.php" >  
                             <fieldset>
                                 <?php
-                                include("../database/db_conection.php");
-                                $a_user=$_SESSION['l_user'];
-                                if($a_user=='') // Se o não estiver logado voltar para login novamente
-                                {  
-                                    echo"<script>alert('Please login to continue!')</script>"; 
-                                    echo"<script>window.open('../Logout.php','_self')</script>";  
-                                    exit();//caso este passo nao seja valido ele retornara ao formulario  
-                                } 
-
+                                
                                     $view_user_query="select * from school WHERE code='$a_user'";//select query for viewing students.
                                     
                                     

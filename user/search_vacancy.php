@@ -1,7 +1,34 @@
 <?php
 session_start();//session starts here
 
-?>
+include("../database/db_conection.php");//Conectando com o banco
+if(isset($_POST['btnstd'])){
+	$std_code=$_POST['slc_std'];
+	$Vac_code=$_POST['Vac_code'];
+      // Verificar usuario ja foi registrado no banco  
+	$check_pd_query="SELECT * FROM `pendency` WHERE students='$std_code' AND vacancy='$Vac_code' AND situation='pending'";  
+	$run_query=mysqli_query($dbcon,$check_pd_query);
+	if(mysqli_num_rows($run_query)>0)  
+	{  
+		echo "<script>alert('Pendency is already exist in our database, Please try another one!')</script>"; 
+		echo"<script>window.open('search_vacancy.php','_self')</script>";  // retorna ao formulario
+        exit(); // Não prosseguir as proximas linhas
+        }
+        $insert_pdc ="INSERT INTO `pendency`(`code`, `request_date`, `situation`, `date_answer`, `students`, `vacancy`) VALUES ('',CURRENT_TIMESTAMP,'pending',null,'$std_code','$Vac_code')";
+
+        if(mysqli_query($dbcon,$insert_pdc))  
+        {  
+
+        	echo"<script>window.open('search_vacancy.php','_self')</script>";  
+        } else{
+        	echo "Error: " .$insert_pdc . "<br>" . mysqli_error($dbcon);
+        }
+        mysqli_close($dbcon);  
+    }
+
+
+
+    ?>
 
 <html>
 <head lang="en">
@@ -16,13 +43,12 @@ session_start();//session starts here
 	<link type="text/css" rel="stylesheet" href="..\css\style.css">
 	<!-- Jquery--> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="..\js\jquery.min.js"></script>
+
 	<script src="..\js\function.js"></script>
 	<!-- Angular -->
 	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
 	<script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
-	<script src="..\js\angular\angular.min.js"></script>
-	<script src="..\js\angular\angular-animate.js"></script>
+
 	<title>Search Vacancies</title>
 </head>
 <body id="rgVac">
@@ -36,7 +62,7 @@ session_start();//session starts here
 					</div>
 
 					<div class="panel-body">
-						<form role="form" id="form_Search_Vac" name="form_Search_Vac" method="post" action="search_vacancy.php">
+						<form role="form" id="form_Search_Vac" name="form_Search_Vac" method="post" action="choose_vac.php">
 							<fieldset>
 								<div ng-app="switch_regVac" > <!-- Usei Angular Switch -->
 									<div ng-controller="GradeController" >
@@ -90,112 +116,19 @@ session_start();//session starts here
 								<select class="form-control" id="city" name="city" >
 								</select>
 							</div>  
-
+							<input type="hidden" name="l_user" value="<?php echo $_SESSION['l_user'];?>">
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Search" name="SearchVac" >
 
-							<div class="is-divider" data-content="OR"></div>
-
-
-<?php
-	include("../database/db_conection.php");//Conectando com o banco
-	error_reporting(E_ALL);
-	if(isset($_POST['SearchVac'])){
-
-		$Vac_edu= $_POST['eduVac1'];  
-		$Vac_grade=$_POST['gradeVac1'];
-		$Vac_uf=$_POST['uf'];
-		$Vac_city=$_POST['city'];
-		$Vac_guardian=$_SESSION['l_user'];
-
-		$position = strpos($Vac_edu,":");
-		$Vac_edu = substr($Vac_edu, $position + 1);
-		// validando campos vazios
-		
-		if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
-        {  
-        	echo"<script>alert('Please login to continue!')</script>"; 
-        	echo"<script>window.open('../Logout.php','_self')</script>";  
-	        exit();//caso este passo nao seja valido ele retornara ao formulario  
-	        
-	    } 
-		if($Vac_edu=='') 
-		{  
-			echo"<script>alert('Please enter the Education')</script>";  
-        	exit();//caso este passo nao seja valido ele retornara ao formulario  
-        }
-        if($Vac_grade=='') 
-        {  
-        	echo"<script>alert('Please enter the Grade')</script>";  
-        	exit();//caso este passo nao seja valido ele retornara ao formulario  
-        }
-        if($Vac_city=='') 
-        {  
-        	echo"<script>alert('Please enter the UF')</script>";  
-	        exit();//caso este passo nao seja valido ele retornara ao formulario  
-	        
-	    }
-	    if($Vac_uf=='') // Se o não estiver logado voltar para login novamente
-        {  
-        	echo"<script>alert('Please enter the City')</script>";
-        	  
-	        exit();//caso este passo nao seja valido ele retornara ao formulario  
-	        
-	    }
-
-    	//inserir usuario em banco de dados. 
-	    $search_Vac="SELECT `vacancies`.`education`, `vacancies`.`grade`, `school`.`name`, `school`.`phone1` FROM `vacancies` INNER JOIN `school` ON vacancies.school=school.code WHERE vacancies.grade='$Vac_grade' AND vacancies.education='$Vac_edu' AND school.state='$Vac_uf' AND school.city='$Vac_city'";
-	    $run=mysqli_query($dbcon,$search_Vac);//here run the sql query.
-	    $cont = 0;
-	    if (mysqli_num_rows($run)<=0) {
-	    	# code...
-	    } else {
-	    	while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
-	    	{
-	    		$sec_edu=$row[0];
-	    		$sec_grade=$row[1];
-	    		$sec_name=$row[2];
-	    		$sec_ph1=$row[3];
-
-        	
-
-?>
-							<div class="btn btn-block form-group">
-								<button class=" btn-primary btn-lg " type="button" data-toggle="collapse" data-target="<?php echo '#sea'.$cont; ?>" aria-expanded="false" aria-controls="<?php echo 'sea'.$cont; ?>" style="white-space:normal; width:100%; ">
-									<?php echo $sec_name; ?>
-								</button>
-							</div>
-							
-							<div class="collapse btn-block btn-sm"	 id="<?php echo 'sea'.$cont; ?>" >
-								
-							</div>
-							<?php
-										$cont = $cont +1;
-        							} //fim do Whiler
-        						} // fim do else
-        					?>
 						</fieldset>
 					</form>
-					
+					<button class="btn btn-lg btn-danger btn-block center-block" onclick="window.location.href='menuU.php'">BACK</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </body>
-<?php
-       
 
-	    if(mysqli_query($dbcon,$search_Vac))  
-	    {  
-	    	 
-	    	//echo"<script>window.open('MenuU.php','_self')</script>";  
-	    } else{
-	    	echo "Error: " . $search_Vac . "<br>" . mysqli_error($dbcon);
-	    }
-	    mysqli_close($dbcon);  
-
-	}
-?>
 <script type="text/javascript">
 	// Switch Registe Students
 

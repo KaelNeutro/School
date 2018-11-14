@@ -1,6 +1,13 @@
 <?php
 session_start();//session starts here
-
+if (isset($_SESSION['l_user'])){
+    $user_sess=$_SESSION['l_user'];
+    if ($user_sess) {
+    # code...
+        echo "<script>alert('There is a user logged in!')</script>";
+        exit();
+    }
+}
 ?>
 
 
@@ -15,7 +22,7 @@ session_start();//session starts here
 </head>
 <style>
 .login-panel {
-    margin-top: 150px;
+    margin-top: 100px;
 
 </style>
 
@@ -30,18 +37,23 @@ session_start();//session starts here
                     <div class="panel-body">
                         <form role="form" method="post" action="login.php">
                             <fieldset>
-                                <div class="form-group">
-                                    <input class="radio-line" type="radio" name="tpuser" id="tpuser" value="user" checked="">
-                                    <label for="tpuser">Users</label>
-                                    <input class="radio-line" type="radio" name="tpuser" id="tpschool" value="school">
-                                    <label for="tpschool">School</label>
+                                <div class="funkyradio" id="t_radio" style="">
+                                    <div class="form-group funkyradio-success" style=" float: left; ">
+                                        <input  type="radio" name="tpuser" id="tpuser" value="user" checked >
+                                        <label for="tpuser" style="width: 142px;">Users</label>
+                                    </div>
+                                    <div class="divider" style="float: left;position: relative;width: 5px;height: 32px;"></div>
+                                    <div class="form-group funkyradio-success" style="position: relative; float: left; width:auto; ">
+                                        <input  type="radio" name="tpuser" id="tpschool" value="school">
+                                        <label for="tpschool" style="width: 147px;">School</label>
+                                    </div>
                                 </div>
 
                                 <div class="form-group"  >
                                     <input class="form-control" placeholder="login" name="log" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="pass" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="pass" type="password" value="" autofocus>
                                 </div>
 
                                 <input class="btn btn-lg btn-success btn-block" type="submit" value="login" name="login" >
@@ -71,6 +83,7 @@ if(isset($_POST['login']))
     $user_log=$_POST['log'];
     $user_pass=$_POST['pass'];
     $user_type=$_POST['tpuser'];
+    
 
     if ($user_type == "user") {
         # code...
