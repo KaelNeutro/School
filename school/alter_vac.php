@@ -120,6 +120,7 @@ $cont = $cont + 1;
 ?>                      
 </fieldset>
 </form>
+<button class="btn btn-lg btn-danger center-block" onclick="window.location.href='menuS.php'">BACK</button>
 </div>
 </div>
 </div>

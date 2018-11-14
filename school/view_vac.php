@@ -67,7 +67,7 @@ if($sch_sch=='') // Se o não estiver logado voltar para login novamente
 
         <?php
          
-        $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch'";//select query for viewing Vacancies.
+        $view_Vacancies_query="select * from vacancies WHERE school='$sch_sch' AND del='0'";//select query for viewing Vacancies.
         $run=mysqli_query($dbcon,$view_Vacancies_query);//here run the sql query.
 
         while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.
@@ -88,7 +88,7 @@ if($sch_sch=='') // Se o não estiver logado voltar para login novamente
             <td><?php echo $sch_edu;  ?></td>
             <td><?php echo $sch_grade;  ?></td>
             <td><?php echo $sch_qtd;  ?></td>
-            <td><a href="delete_vac.php?del=<?php echo $sch_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
+            <td><a href="delete_vac.php?dell=<?php echo $sch_code ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->
         </tr>
 
         <?php } ?>

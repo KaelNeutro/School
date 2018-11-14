@@ -10,8 +10,6 @@ if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
 }
 ?>
 
-?>
-
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
@@ -90,12 +88,13 @@ if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
 							</div>
 
 							<div class="form-group">
-								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity">
+								<input type="number" min="1" name="qtd_Vac" class="form-control" placeholder="Quantity" required>
 							</div>  
 
 							<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="registerVac" >
 						</fieldset>
 					</form>
+					<button class="btn btn-lg btn-danger center-block" onclick="window.location.href='menuS.php'">BACK</button>
 				</div>
 			</div>
 		</div>
@@ -149,7 +148,7 @@ if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
 	        
 	    }
 	            // Verificar se vaga ja foi registrada no banco  
-	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian'";  
+	    $check_grade_query="select * from vacancies WHERE grade='$Vac_grade' AND education='$Vac_edu' AND school='$Vac_guardian' AND del='0'";  
 	    $run_query=mysqli_query($dbcon,$check_grade_query);  
 
 	    if(mysqli_num_rows($run_query)>0)  
@@ -161,7 +160,7 @@ if($Vac_guardian=='') // Se o não estiver logado voltar para login novamente
        	} 
 
     	//inserir usuario em banco de dados. 
-    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','$Vac_guardian')";
+    $insert_Vac="INSERT INTO `vacancies`(`code`, `education`, `grade`, `quantity`, `del`, `school`) VALUES ('','$Vac_edu','$Vac_grade','$Vac_qtd','0','$Vac_guardian')";
 
     if(mysqli_query($dbcon,$insert_Vac))  
     {  
