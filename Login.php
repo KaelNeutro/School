@@ -56,7 +56,7 @@ if (isset($_SESSION['l_user'])){
                                     <input class="form-control" placeholder="Password" name="pass" type="password" value="" autofocus>
                                 </div>
 
-                                <input class="btn btn-lg btn-success btn-block" type="submit" value="login" name="login" >
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Login" name="login" >
 
                                 <!-- Ir para o formulario de cadastro -->
                                 <center></br><b>No account yet? </b> <br></b><a href="Registration.php">Sign up here!</a></center>
